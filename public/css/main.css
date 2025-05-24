@@ -120,6 +120,17 @@ main {
     margin-bottom: 3rem;
 }
 
+.hero-logo {
+    margin-bottom: 2rem;
+}
+
+.logo-image {
+    max-width: 480px;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+}
+
 .hero-title {
     font-size: 3rem;
     font-weight: 800;
@@ -584,6 +595,11 @@ main {
 
     .hero-title {
         font-size: 2rem;
+    }
+
+    .logo-image {
+        max-width: 320px;
+        max-height: 120px;
     }
 
     .about-content {

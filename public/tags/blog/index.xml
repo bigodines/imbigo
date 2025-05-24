@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on Matheus Mendes</title>
-    <link>http://localhost:1313/tags/blog/</link>
-    <description>Recent content in Blog on Matheus Mendes</description>
+    <title>Blog on I`m Bigo</title>
+    <link>http://localhost:49677/tags/blog/</link>
+    <description>Recent content in Blog on I`m Bigo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 24 May 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:49677/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Welcome to My Blog</title>
-      <link>http://localhost:1313/posts/welcome/</link>
+      <link>http://localhost:49677/posts/welcome/</link>
       <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/welcome/</guid>
+      <guid>http://localhost:49677/posts/welcome/</guid>
       <description>&lt;p&gt;Welcome to my personal blog! This is the first post on my new Hugo-powered website.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-to-expect&#34;&gt;What to Expect&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;ll be sharing my thoughts and experiences on:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Software Development&lt;/strong&gt;: Tips, tricks, and lessons learned&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Technology Trends&lt;/strong&gt;: My take on emerging technologies&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Open Source&lt;/strong&gt;: Projects I&amp;rsquo;m working on and contributing to&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Personal Growth&lt;/strong&gt;: My journey as a developer&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;why-hugo&#34;&gt;Why Hugo?&lt;/h2&gt;&#xA;&lt;p&gt;I chose Hugo for this blog because:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Speed&lt;/strong&gt;: Hugo generates static sites incredibly fast&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Simplicity&lt;/strong&gt;: Easy to write content in Markdown&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Flexibility&lt;/strong&gt;: Powerful templating system&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: Static sites are fast and secure&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
   </channel>

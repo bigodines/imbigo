@@ -1,7 +1,9 @@
 {{ define "main" }}
 <div class="container">
     <section class="hero">
-        <h1 class="hero-title">{{ .Site.Params.author }}</h1>
+        <div class="hero-logo">
+            <img src="{{ "img/logo_imbigo.png" | relURL }}" alt="{{ .Site.Params.author }}" class="logo-image">
+        </div>
         <p class="hero-subtitle">{{ .Site.Params.description }}</p>
     </section>
     
