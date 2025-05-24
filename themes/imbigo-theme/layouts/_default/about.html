@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="container">
+    <div class="about-page">
+        <div class="about-content">
+            <div class="about-text">
+                <h1 class="about-title">{{ .Title }}</h1>
+                <div class="about-description">
+                    {{ .Content }}
+                </div>
+            </div>
+            <div class="about-image">
+                {{ if .Params.image }}
+                <img src="{{ .Params.image | relURL }}" alt="{{ .Site.Params.author }}" class="profile-image">
+                {{ else }}
+                <div class="profile-placeholder">
+                    <span>{{ substr .Site.Params.author 0 1 }}</span>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

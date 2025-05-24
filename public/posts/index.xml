@@ -1,27 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Matheus Mendes</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on Matheus Mendes</description>
+    <title>Posts on Matheus Mendes</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on Matheus Mendes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 24 May 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>About Me</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/about/</guid>
-      <description>&lt;p&gt;Hi, I&amp;rsquo;m &lt;strong&gt;Matheus Mendes&lt;/strong&gt;, a passionate software developer with a love for creating elegant solutions to complex problems.&lt;/p&gt;&#xA;&lt;h2 id=&#34;my-journey&#34;&gt;My Journey&lt;/h2&gt;&#xA;&lt;p&gt;I started my journey in software development several years ago, driven by curiosity and a desire to build things that matter. Over the years, I&amp;rsquo;ve worked with various technologies and frameworks, always striving to stay current with industry trends and best practices.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-do&#34;&gt;What I Do&lt;/h2&gt;&#xA;&lt;p&gt;Currently, I focus on:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Full-stack web development&lt;/strong&gt; using modern frameworks&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Open source contributions&lt;/strong&gt; to projects I&amp;rsquo;m passionate about&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Technical writing&lt;/strong&gt; to share knowledge with the community&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Continuous learning&lt;/strong&gt; and exploring new technologies&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;philosophy&#34;&gt;Philosophy&lt;/h2&gt;&#xA;&lt;p&gt;I believe in writing clean, maintainable code and creating user experiences that are both functional and delightful. When I&amp;rsquo;m not coding, you can find me exploring new technologies, contributing to open source projects, or sharing my knowledge through blog posts and tutorials.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Open Source Projects</title>
-      <link>http://localhost:1313/code/</link>
-      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/code/</guid>
-      <description>&lt;p&gt;Welcome to my collection of open source projects! Here you&amp;rsquo;ll find various tools, themes, and applications I&amp;rsquo;ve built and shared with the community.&lt;/p&gt;&#xA;&lt;p&gt;I believe in the power of open source software and try to contribute back to the community whenever possible. Each project represents a learning journey and an opportunity to solve real-world problems.&lt;/p&gt;&#xA;&lt;p&gt;Feel free to explore the code, contribute improvements, or use these projects in your own work. If you have any questions or suggestions, don&amp;rsquo;t hesitate to open an issue or reach out!&lt;/p&gt;</description>
-    </item>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Welcome to My Blog</title>
       <link>http://localhost:1313/posts/welcome/</link>

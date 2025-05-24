@@ -1,3 +1,22 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://imbigo.net/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Matheus Mendes'
+theme = 'imbigo-theme'
+
+[params]
+  author = 'Matheus Mendes'
+  description = 'Personal website and blog'
+  
+[menu]
+  [[menu.main]]
+    name = "Blog"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+  [[menu.main]]
+    name = "Code"
+    url = "/code/"
+    weight = 3

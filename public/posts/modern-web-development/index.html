@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Modern Web Applications | Matheus Mendes</title>
+    <meta name="description" content="Personal website and blog">
+    <meta name="author" content="Matheus Mendes">
+    
+    
+    <link rel="stylesheet" href="/css/main.css">
+    
+    
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+<body>
+    <header class="header">
+    <div class="container">
+        <nav class="nav">
+            <a href="/" class="nav-brand">Matheus Mendes</a>
+            
+            <div class="nav-menu" id="nav-menu">
+                
+                <a href="/" class="nav-link ">
+                    Blog
+                </a>
+                
+                <a href="/about/" class="nav-link ">
+                    About
+                </a>
+                
+                <a href="/code/" class="nav-link ">
+                    Code
+                </a>
+                
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div>
+</header>
+
+    
+    <main>
+        
+<div class="container">
+    <article class="single-post">
+        <header class="post-header">
+            <h1 class="post-title">Building Modern Web Applications</h1>
+            
+            <div class="post-meta">
+                <time datetime="2025-05-23">
+                    May 23, 2025
+                </time>
+                
+                <div class="post-tags">
+                    
+                    <span class="tag">#web-development</span>
+                    
+                    <span class="tag">#javascript</span>
+                    
+                    <span class="tag">#best-practices</span>
+                    
+                </div>
+                
+            </div>
+            
+        </header>
+        
+        <div class="post-content">
+            <p>In today&rsquo;s fast-paced web development landscape, building modern, performant applications requires careful consideration of tools, practices, and user experience.</p>
+<h2 id="the-modern-web-stack">The Modern Web Stack</h2>
+<p>The web development ecosystem has evolved significantly. Here&rsquo;s what I consider essential for modern web applications:</p>
+<h3 id="frontend-considerations">Frontend Considerations</h3>
+<ul>
+<li><strong>Performance First</strong>: Optimize for Core Web Vitals</li>
+<li><strong>Accessibility</strong>: Build for everyone from the start</li>
+<li><strong>Progressive Enhancement</strong>: Ensure basic functionality works everywhere</li>
+<li><strong>Mobile-First Design</strong>: Most users are on mobile devices</li>
+</ul>
+<h3 id="technology-choices">Technology Choices</h3>
+<p>When selecting technologies for a new project, I evaluate:</p>
+<ol>
+<li><strong>Community Support</strong>: Active maintenance and community</li>
+<li><strong>Learning Curve</strong>: Team expertise and onboarding time</li>
+<li><strong>Performance</strong>: Bundle size and runtime performance</li>
+<li><strong>Ecosystem</strong>: Available libraries and tools</li>
+</ol>
+<h2 id="best-practices-i-follow">Best Practices I Follow</h2>
+<h3 id="code-quality">Code Quality</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Example: Clean, readable function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">calculateTotal</span>(<span style="color:#a6e22e">items</span>, <span style="color:#a6e22e">taxRate</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.08</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">subtotal</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">sum</span>, <span style="color:#a6e22e">item</span>) =&gt; <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">price</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tax</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">subtotal</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">taxRate</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">subtotal</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tax</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">total</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">subtotal</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">tax</span>
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="testing-strategy">Testing Strategy</h3>
+<ul>
+<li><strong>Unit Tests</strong>: Test individual functions and components</li>
+<li><strong>Integration Tests</strong>: Verify components work together</li>
+<li><strong>E2E Tests</strong>: Test complete user workflows</li>
+<li><strong>Performance Tests</strong>: Monitor bundle size and runtime metrics</li>
+</ul>
+<h3 id="deployment-and-monitoring">Deployment and Monitoring</h3>
+<p>Modern applications need robust deployment and monitoring:</p>
+<ul>
+<li><strong>CI/CD Pipelines</strong>: Automated testing and deployment</li>
+<li><strong>Performance Monitoring</strong>: Real user metrics</li>
+<li><strong>Error Tracking</strong>: Proactive issue detection</li>
+<li><strong>Feature Flags</strong>: Safe feature rollouts</li>
+</ul>
+<h2 id="looking-forward">Looking Forward</h2>
+<p>The web platform continues to evolve rapidly. Some trends I&rsquo;m excited about:</p>
+<ul>
+<li><strong>Web Components</strong>: Standardized component architecture</li>
+<li><strong>WebAssembly</strong>: High-performance web applications</li>
+<li><strong>Edge Computing</strong>: Faster, more distributed applications</li>
+<li><strong>Progressive Web Apps</strong>: Native-like web experiences</li>
+</ul>
+<p>The key is to stay curious, keep learning, and always prioritize user experience over developer convenience.</p>
+<p>What are your thoughts on the current state of web development? Feel free to share your experiences and insights!</p>
+        </div>
+        
+        
+        <footer class="post-footer">
+            <div class="post-navigation">
+                
+                
+                <a href="/posts/welcome/" class="nav-next">Welcome to My Blog →</a>
+                
+            </div>
+        </footer>
+        
+    </article>
+</div>
+
+    </main>
+    
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <p>&copy; 2025 Matheus Mendes. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/index.xml" class="footer-link">RSS</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    
+    <script src="/js/main.js"></script>
+</body>
+</html>
