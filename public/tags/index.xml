@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on </title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://imbigo.net/tags/</link>
     <description>Recent content in Tags on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 24 May 2025 21:58:06 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://imbigo.net/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tag1</title>
-      <link>http://localhost:1313/tags/tag1/</link>
+      <link>https://imbigo.net/tags/tag1/</link>
       <pubDate>Sat, 24 May 2025 21:58:06 -0700</pubDate>
-      <guid>http://localhost:1313/tags/tag1/</guid>
+      <guid>https://imbigo.net/tags/tag1/</guid>
       <description></description>
     </item>
     <item>
       <title>Tag2</title>
-      <link>http://localhost:1313/tags/tag2/</link>
+      <link>https://imbigo.net/tags/tag2/</link>
       <pubDate>Sat, 24 May 2025 21:58:06 -0700</pubDate>
-      <guid>http://localhost:1313/tags/tag2/</guid>
+      <guid>https://imbigo.net/tags/tag2/</guid>
       <description></description>
     </item>
     <item>
       <title>Blog</title>
-      <link>http://localhost:1313/tags/blog/</link>
+      <link>https://imbigo.net/tags/blog/</link>
       <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/blog/</guid>
+      <guid>https://imbigo.net/tags/blog/</guid>
       <description></description>
     </item>
     <item>
       <title>Hugo</title>
-      <link>http://localhost:1313/tags/hugo/</link>
+      <link>https://imbigo.net/tags/hugo/</link>
       <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/hugo/</guid>
+      <guid>https://imbigo.net/tags/hugo/</guid>
       <description></description>
     </item>
     <item>
       <title>Welcome</title>
-      <link>http://localhost:1313/tags/welcome/</link>
+      <link>https://imbigo.net/tags/welcome/</link>
       <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/welcome/</guid>
+      <guid>https://imbigo.net/tags/welcome/</guid>
       <description></description>
     </item>
     <item>
       <title>Best-Practices</title>
-      <link>http://localhost:1313/tags/best-practices/</link>
+      <link>https://imbigo.net/tags/best-practices/</link>
       <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/best-practices/</guid>
+      <guid>https://imbigo.net/tags/best-practices/</guid>
       <description></description>
     </item>
     <item>
       <title>Javascript</title>
-      <link>http://localhost:1313/tags/javascript/</link>
+      <link>https://imbigo.net/tags/javascript/</link>
       <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/javascript/</guid>
+      <guid>https://imbigo.net/tags/javascript/</guid>
       <description></description>
     </item>
     <item>
       <title>Web-Development</title>
-      <link>http://localhost:1313/tags/web-development/</link>
+      <link>https://imbigo.net/tags/web-development/</link>
       <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/web-development/</guid>
+      <guid>https://imbigo.net/tags/web-development/</guid>
       <description></description>
     </item>
   </channel>

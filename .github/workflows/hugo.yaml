@@ -32,7 +32,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.147.2
+      HUGO_VERSION: 0.147.5
       HUGO_ENVIRONMENT: production
       TZ: America/Los_Angeles
     steps:
@@ -68,7 +68,7 @@ jobs:
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/" \
+            --baseURL "https://imbigo.net/" \
             --cacheDir "${{ runner.temp }}/hugo_cache"
       - name: Cache Save
         id: cache-save

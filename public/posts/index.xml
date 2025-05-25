@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on </title>
-    <link>http://localhost:1313/posts/</link>
+    <link>https://imbigo.net/posts/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 24 May 2025 21:58:06 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://imbigo.net/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello world</title>
-      <link>http://localhost:1313/posts/hello-world/</link>
+      <link>https://imbigo.net/posts/hello-world/</link>
       <pubDate>Sat, 24 May 2025 21:58:06 -0700</pubDate>
-      <guid>http://localhost:1313/posts/hello-world/</guid>
+      <guid>https://imbigo.net/posts/hello-world/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Write your introduction here.&lt;/p&gt;&#xA;&lt;h2 id=&#34;main-content&#34;&gt;Main Content&lt;/h2&gt;&#xA;&lt;p&gt;Your main content goes here. You can use all standard markdown features:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Bold text&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;em&gt;Italic text&lt;/em&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;code&gt;Code snippets&lt;/code&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://example.com&#34;&gt;Links&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;code-blocks&#34;&gt;Code Blocks&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;example&lt;/span&gt;() {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello, world!&amp;#34;&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;images&#34;&gt;Images&lt;/h3&gt;&#xA;&lt;p&gt;You can reference images from your Obsidian attachments folder:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;image-name.png&#34; alt=&#34;image-name.png&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;obsidian-features&#34;&gt;Obsidian Features&lt;/h3&gt;&#xA;&lt;p&gt;You can use Obsidian wikilinks like [Other Note](Other Note) and they&amp;rsquo;ll be converted during sync.&lt;/p&gt;&#xA;&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;&#xA;&lt;p&gt;Wrap up your thoughts here.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Welcome to My Blog</title>
-      <link>http://localhost:1313/posts/welcome/</link>
+      <link>https://imbigo.net/posts/welcome/</link>
       <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/welcome/</guid>
+      <guid>https://imbigo.net/posts/welcome/</guid>
       <description>&lt;p&gt;Welcome to my personal blog! This is the first post on my new Hugo-powered website.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-to-expect&#34;&gt;What to Expect&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;ll be sharing my thoughts and experiences on:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Software Development&lt;/strong&gt;: Tips, tricks, and lessons learned&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Technology Trends&lt;/strong&gt;: My take on emerging technologies&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Open Source&lt;/strong&gt;: Projects I&amp;rsquo;m working on and contributing to&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Personal Growth&lt;/strong&gt;: My journey as a developer&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;why-hugo&#34;&gt;Why Hugo?&lt;/h2&gt;&#xA;&lt;p&gt;I chose Hugo for this blog because:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Speed&lt;/strong&gt;: Hugo generates static sites incredibly fast&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Simplicity&lt;/strong&gt;: Easy to write content in Markdown&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Flexibility&lt;/strong&gt;: Powerful templating system&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: Static sites are fast and secure&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
     <item>
       <title>Building Modern Web Applications</title>
-      <link>http://localhost:1313/posts/modern-web-development/</link>
+      <link>https://imbigo.net/posts/modern-web-development/</link>
       <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/modern-web-development/</guid>
+      <guid>https://imbigo.net/posts/modern-web-development/</guid>
       <description>&lt;p&gt;In today&amp;rsquo;s fast-paced web development landscape, building modern, performant applications requires careful consideration of tools, practices, and user experience.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-modern-web-stack&#34;&gt;The Modern Web Stack&lt;/h2&gt;&#xA;&lt;p&gt;The web development ecosystem has evolved significantly. Here&amp;rsquo;s what I consider essential for modern web applications:&lt;/p&gt;&#xA;&lt;h3 id=&#34;frontend-considerations&#34;&gt;Frontend Considerations&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Performance First&lt;/strong&gt;: Optimize for Core Web Vitals&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Accessibility&lt;/strong&gt;: Build for everyone from the start&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Progressive Enhancement&lt;/strong&gt;: Ensure basic functionality works everywhere&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Mobile-First Design&lt;/strong&gt;: Most users are on mobile devices&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;technology-choices&#34;&gt;Technology Choices&lt;/h3&gt;&#xA;&lt;p&gt;When selecting technologies for a new project, I evaluate:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Community Support&lt;/strong&gt;: Active maintenance and community&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Learning Curve&lt;/strong&gt;: Team expertise and onboarding time&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: Bundle size and runtime performance&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Ecosystem&lt;/strong&gt;: Available libraries and tools&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
   </channel>

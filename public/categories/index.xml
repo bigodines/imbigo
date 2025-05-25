@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on </title>
-    <link>http://localhost:1313/categories/</link>
+    <link>https://imbigo.net/categories/</link>
     <description>Recent content in Categories on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 24 May 2025 21:58:06 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://imbigo.net/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Category</title>
-      <link>http://localhost:1313/categories/category/</link>
+      <link>https://imbigo.net/categories/category/</link>
       <pubDate>Sat, 24 May 2025 21:58:06 -0700</pubDate>
-      <guid>http://localhost:1313/categories/category/</guid>
+      <guid>https://imbigo.net/categories/category/</guid>
       <description></description>
     </item>
   </channel>
