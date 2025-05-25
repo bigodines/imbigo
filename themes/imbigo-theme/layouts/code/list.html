@@ -1,0 +1,67 @@
+{{ define "main" }}
+<div class="container">
+    <section class="projects-header">
+        <h1 class="section-title">{{ .Title }}</h1>
+        {{ if .Content }}
+        <div class="section-description">
+            {{ .Content }}
+        </div>
+        {{ end }}
+    </section>
+    
+    <section class="projects-list">
+        {{ $projects := where .Site.RegularPages "Type" "code" }}
+        {{ if $projects }}
+            <div class="projects-grid">
+                {{ range $projects.ByWeight.ByDate.Reverse }}
+                <article class="project-card {{ if .Params.featured }}featured{{ end }}">
+                    <div class="project-card-header">
+                        <h3 class="project-title">
+                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        </h3>
+                        {{ if .Params.status }}
+                        <span class="project-status status-{{ .Params.status | lower }}">{{ .Params.status }}</span>
+                        {{ end }}
+                    </div>
+                    
+                    {{ if .Params.description }}
+                    <p class="project-excerpt">{{ .Params.description }}</p>
+                    {{ end }}
+                    
+                    {{ if .Params.technologies }}
+                    <div class="project-tech">
+                        {{ range first 3 .Params.technologies }}
+                        <span class="tech-tag">{{ . }}</span>
+                        {{ end }}
+                        {{ if gt (len .Params.technologies) 3 }}
+                        <span class="tech-more">+{{ sub (len .Params.technologies) 3 }} more</span>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                    
+                    <div class="project-links">
+                        {{ if .Params.github }}
+                        <a href="{{ .Params.github }}" class="project-link github" target="_blank" rel="noopener">
+                            Code
+                        </a>
+                        {{ end }}
+                        {{ if .Params.demo }}
+                        <a href="{{ .Params.demo }}" class="project-link demo" target="_blank" rel="noopener">
+                            Demo
+                        </a>
+                        {{ end }}
+                        <a href="{{ .RelPermalink }}" class="project-link details">
+                            Details →
+                        </a>
+                    </div>
+                </article>
+                {{ end }}
+            </div>
+        {{ else }}
+            <div class="no-projects">
+                <p>No projects yet. Check back soon!</p>
+            </div>
+        {{ end }}
+    </section>
+</div>
+{{ end }}

@@ -1,0 +1,70 @@
+{{ define "main" }}
+<div class="container">
+    <article class="project-detail">
+        <header class="project-header">
+            <h1 class="project-title">{{ .Title }}</h1>
+            <div class="project-meta">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">
+                    {{ .Date.Format "January 2, 2006" }}
+                </time>
+                {{ if .Params.status }}
+                <span class="project-status status-{{ .Params.status | lower }}">{{ .Params.status }}</span>
+                {{ end }}
+            </div>
+            
+            {{ if .Params.description }}
+            <p class="project-description">{{ .Params.description }}</p>
+            {{ end }}
+            
+            {{ if or .Params.github .Params.demo }}
+            <div class="project-links">
+                {{ if .Params.github }}
+                <a href="{{ .Params.github }}" class="project-link github" target="_blank" rel="noopener">
+                    <span>View Code</span>
+                </a>
+                {{ end }}
+                {{ if .Params.demo }}
+                <a href="{{ .Params.demo }}" class="project-link demo" target="_blank" rel="noopener">
+                    <span>Live Demo</span>
+                </a>
+                {{ end }}
+            </div>
+            {{ end }}
+            
+            {{ if .Params.technologies }}
+            <div class="project-technologies">
+                <h3>Technologies Used</h3>
+                <div class="tech-tags">
+                    {{ range .Params.technologies }}
+                    <span class="tech-tag">{{ . }}</span>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+        </header>
+        
+        <div class="project-content">
+            {{ .Content }}
+        </div>
+        
+        <footer class="project-footer">
+            <div class="project-navigation">
+                {{ with .PrevInSection }}
+                <a href="{{ .RelPermalink }}" class="nav-link prev">
+                    ← {{ .Title }}
+                </a>
+                {{ end }}
+                {{ with .NextInSection }}
+                <a href="{{ .RelPermalink }}" class="nav-link next">
+                    {{ .Title }} →
+                </a>
+                {{ end }}
+            </div>
+            
+            <div class="back-to-projects">
+                <a href="/code/" class="back-link">← Back to Code</a>
+            </div>
+        </footer>
+    </article>
+</div>
+{{ end }}

@@ -1,11 +1,11 @@
 baseURL = 'https://imbigo.net/'
 languageCode = 'en-us'
-title = 'I`m Bigo'
+title = ''
 theme = 'imbigo-theme'
 
 [params]
   author = 'Matheus Mendes'
-  description = 'tech, startups and bad advice'
+  description = 'tech, startups and bad advice from 20 years of coding'
   
 [menu]
   [[menu.main]]
