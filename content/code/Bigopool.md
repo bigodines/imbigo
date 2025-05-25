@@ -11,7 +11,7 @@ status: Active
 featured: true
 weight: 1
 ---
-Foobar
+
   
 
 ## Project Overview

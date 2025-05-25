@@ -1,9 +1,9 @@
 ---
-title: vibin_obsidian_and_hugo_integration
+title: Imbigo.net
 date: 2025-05-24T21:59:05-07:00
 draft: false
 type: code
-description: Brief description of your project
+description: Vibin some Obsidian + Hugo integration with auto-deploy to a custom domain and free hosting from github
 technologies:
   - JavaScript
   - React
