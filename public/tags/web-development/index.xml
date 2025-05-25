@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web-Development on </title>
-    <link>https://imbigo.net/tags/web-development/</link>
+    <link>http://localhost:1313/tags/web-development/</link>
     <description>Recent content in Web-Development on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 23 May 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://imbigo.net/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building Modern Web Applications</title>
-      <link>https://imbigo.net/posts/modern-web-development/</link>
+      <link>http://localhost:1313/posts/modern-web-development/</link>
       <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://imbigo.net/posts/modern-web-development/</guid>
+      <guid>http://localhost:1313/posts/modern-web-development/</guid>
       <description>&lt;p&gt;In today&amp;rsquo;s fast-paced web development landscape, building modern, performant applications requires careful consideration of tools, practices, and user experience.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-modern-web-stack&#34;&gt;The Modern Web Stack&lt;/h2&gt;&#xA;&lt;p&gt;The web development ecosystem has evolved significantly. Here&amp;rsquo;s what I consider essential for modern web applications:&lt;/p&gt;&#xA;&lt;h3 id=&#34;frontend-considerations&#34;&gt;Frontend Considerations&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Performance First&lt;/strong&gt;: Optimize for Core Web Vitals&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Accessibility&lt;/strong&gt;: Build for everyone from the start&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Progressive Enhancement&lt;/strong&gt;: Ensure basic functionality works everywhere&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Mobile-First Design&lt;/strong&gt;: Most users are on mobile devices&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;technology-choices&#34;&gt;Technology Choices&lt;/h3&gt;&#xA;&lt;p&gt;When selecting technologies for a new project, I evaluate:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Community Support&lt;/strong&gt;: Active maintenance and community&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Learning Curve&lt;/strong&gt;: Team expertise and onboarding time&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: Bundle size and runtime performance&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Ecosystem&lt;/strong&gt;: Available libraries and tools&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
   </channel>

@@ -2,7 +2,7 @@
 title: Bigopool
 date: 2025-05-24T22:15:45-07:00
 draft: false
-type: project
+type: code
 description: High performance async processing in Go
 technologies:
   - Go
@@ -11,7 +11,7 @@ status: Active
 featured: true
 weight: 1
 ---
-
+Foobar
   
 
 ## Project Overview

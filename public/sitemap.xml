@@ -2,64 +2,64 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://imbigo.net/code/bigopool/</loc>
+    <loc>http://localhost:1313/code/bigopool/</loc>
     <lastmod>2025-05-24T22:15:45-07:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/code/obsidian&#43;hugo-integration/</loc>
+    <loc>http://localhost:1313/code/obsidian&#43;hugo-integration/</loc>
     <lastmod>2025-05-24T21:59:05-07:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2025-05-24T22:15:45-07:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/code/</loc>
+    <loc>http://localhost:1313/code/</loc>
     <lastmod>2025-05-24T22:15:45-07:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
     <lastmod>2025-05-24T21:58:06-07:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/categories/category/</loc>
+    <loc>http://localhost:1313/categories/category/</loc>
     <lastmod>2025-05-24T21:58:06-07:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/posts/hello-world/</loc>
+    <loc>http://localhost:1313/posts/hello-world/</loc>
     <lastmod>2025-05-24T21:58:06-07:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2025-05-24T21:58:06-07:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/tags/tag1/</loc>
+    <loc>http://localhost:1313/tags/tag1/</loc>
     <lastmod>2025-05-24T21:58:06-07:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/tags/tag2/</loc>
+    <loc>http://localhost:1313/tags/tag2/</loc>
     <lastmod>2025-05-24T21:58:06-07:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-05-24T21:58:06-07:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2025-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/tags/blog/</loc>
+    <loc>http://localhost:1313/tags/blog/</loc>
     <lastmod>2025-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/tags/hugo/</loc>
+    <loc>http://localhost:1313/tags/hugo/</loc>
     <lastmod>2025-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/tags/welcome/</loc>
+    <loc>http://localhost:1313/tags/welcome/</loc>
     <lastmod>2025-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/posts/welcome/</loc>
+    <loc>http://localhost:1313/posts/welcome/</loc>
     <lastmod>2025-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/tags/best-practices/</loc>
+    <loc>http://localhost:1313/tags/best-practices/</loc>
     <lastmod>2025-05-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/posts/modern-web-development/</loc>
+    <loc>http://localhost:1313/posts/modern-web-development/</loc>
     <lastmod>2025-05-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/tags/javascript/</loc>
+    <loc>http://localhost:1313/tags/javascript/</loc>
     <lastmod>2025-05-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://imbigo.net/tags/web-development/</loc>
+    <loc>http://localhost:1313/tags/web-development/</loc>
     <lastmod>2025-05-23T00:00:00+00:00</lastmod>
   </url>
 </urlset>

@@ -51,28 +51,33 @@ process_markdown_file() {
     local source_file="$1"
     local dest_file="$2"
     local file_type="$3"
-
+    
     print_status "Processing $file_type: $(basename "$source_file")"
-
+    
     # Create temporary file for processing
     temp_file=$(mktemp)
-
+    
     # Process the file
     while IFS= read -r line; do
         # Convert Obsidian wikilinks [[Page Name]] to regular markdown links
         # This is a basic conversion - you might need to adjust based on your needs
         line=$(echo "$line" | sed 's/\[\[\([^]]*\)\]\]/[\1](\1)/g')
-
+        
         # Convert Obsidian image links ![[image.png]] to Hugo format
         line=$(echo "$line" | sed 's/!\[\[\([^]]*\)\]\]/![Image](\/img\/\1)/g')
-
+        
+        # Fix type field for projects - change "type: project" to "type: code"
+        if [[ "$file_type" == "project" ]]; then
+            line=$(echo "$line" | sed 's/type: project/type: code/g')
+        fi
+        
         echo "$line" >> "$temp_file"
     done < "$source_file"
-
+    
     # Copy processed file to destination
     cp "$temp_file" "$dest_file"
     rm "$temp_file"
-
+    
     print_success "Synced: $(basename "$dest_file")"
 }
 
