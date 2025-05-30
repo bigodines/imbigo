@@ -30,18 +30,18 @@
       <description>&lt;h1 id=&#34;building-high-performance-concurrent-applications-with-bigopool&#34;&gt;Building High-Performance Concurrent Applications with bigopool&lt;/h1&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Concurrency is one of Go&amp;rsquo;s greatest strengths, but managing goroutines effectively at scale can be challenging. When you have millions of tasks to process, spawning a goroutine for each one can quickly overwhelm your system with excessive memory usage and context switching overhead. This is where worker pools come to the rescue.&lt;/p&gt;&#xA;&lt;p&gt;A few years ago, I created &lt;a href=&#34;https://github.com/bigodines/bigopool&#34;&gt;bigopool&lt;/a&gt;, a lightweight Go library that implements high-performance worker pools with elegant error and result handling. Today, I have finally decided to write about it.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>About Me</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Thu, 29 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;Hi, I&amp;rsquo;m &lt;strong&gt;Matheus Mendes&lt;/strong&gt;, a passionate software developer with a love for creating elegant solutions to complex problems.&lt;/p&gt;&#xA;&lt;h2 id=&#34;my-journey&#34;&gt;My Journey&lt;/h2&gt;&#xA;&lt;p&gt;// TODO&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-do&#34;&gt;What I Do&lt;/h2&gt;&#xA;&lt;p&gt;// TODO&lt;/p&gt;&#xA;&lt;h2 id=&#34;lets-connect&#34;&gt;Let&amp;rsquo;s Connect&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.linkedin.com/in/bigodines&#34;&gt;https://www.linkedin.com/in/bigodines&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Hello world</title>
       <link>http://localhost:1313/posts/hello-world/</link>
       <pubDate>Sat, 24 May 2025 21:58:06 -0700</pubDate>
       <guid>http://localhost:1313/posts/hello-world/</guid>
       <description>&lt;p&gt;I got a new domain and a goal to write more in 2025 so yeah. Welcome to my website.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Tags:&lt;/strong&gt; #blog&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>About Me</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/about/</guid>
-      <description>&lt;p&gt;Hi, I&amp;rsquo;m &lt;strong&gt;Matheus Mendes&lt;/strong&gt;, a passionate software developer with a love for creating elegant solutions to complex problems.&lt;/p&gt;&#xA;&lt;h2 id=&#34;my-journey&#34;&gt;My Journey&lt;/h2&gt;&#xA;&lt;p&gt;I started my journey in software development several years ago, driven by curiosity and a desire to build things that matter. Over the years, I&amp;rsquo;ve worked with various technologies and frameworks, always striving to stay current with industry trends and best practices.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-do&#34;&gt;What I Do&lt;/h2&gt;&#xA;&lt;p&gt;Currently, I focus on:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Full-stack web development&lt;/strong&gt; using modern frameworks&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Open source contributions&lt;/strong&gt; to projects I&amp;rsquo;m passionate about&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Technical writing&lt;/strong&gt; to share knowledge with the community&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Continuous learning&lt;/strong&gt; and exploring new technologies&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;philosophy&#34;&gt;Philosophy&lt;/h2&gt;&#xA;&lt;p&gt;I believe in writing clean, maintainable code and creating user experiences that are both functional and delightful. When I&amp;rsquo;m not coding, you can find me exploring new technologies, contributing to open source projects, or sharing my knowledge through blog posts and tutorials.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
