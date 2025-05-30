@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Bigopool | </title>
+    <meta name="description" content="Building High-Performance Concurrent Applications with `bigopool`">
+    <meta name="author" content="Matheus Mendes">
+    
+    
+    <link rel="stylesheet" href="/css/main.css">
+    
+    
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW5VZSYX44"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-KW5VZSYX44');
+    </script>
+</head>
+<body>
+    <header class="header">
+    <div class="container">
+        <nav class="nav">
+            <a href="/" class="nav-brand"></a>
+            
+            <div class="nav-menu" id="nav-menu">
+                
+                <a href="/" class="nav-link ">
+                    Blog
+                </a>
+                
+                <a href="/about/" class="nav-link ">
+                    About
+                </a>
+                
+                <a href="/code/" class="nav-link ">
+                    Code
+                </a>
+                
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div>
+</header>
+
+    
+    <main>
+        
+<div class="container">
+    <article class="single-post">
+        <header class="post-header">
+            <h1 class="post-title">Meet Bigopool</h1>
+            
+            <div class="post-meta">
+                <time datetime="2025-05-29">
+                    May 29, 2025
+                </time>
+                
+                <div class="post-tags">
+                    
+                    <span class="tag">#bigopool</span>
+                    
+                    <span class="tag">#go</span>
+                    
+                </div>
+                
+            </div>
+            
+        </header>
+        
+        <div class="post-content">
+            <h1 id="building-high-performance-concurrent-applications-with-bigopool">Building High-Performance Concurrent Applications with bigopool</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Concurrency is one of Go&rsquo;s greatest strengths, but managing goroutines effectively at scale can be challenging. When you have millions of tasks to process, spawning a goroutine for each one can quickly overwhelm your system with excessive memory usage and context switching overhead. This is where worker pools come to the rescue.</p>
+<p>A few years ago, I created <a href="https://github.com/bigodines/bigopool">bigopool</a>, a lightweight Go library that implements high-performance worker pools with elegant error and result handling. Today, I have finally decided to write about it.</p>
+<h2 id="the-problem-too-many-goroutines">The Problem: Too Many Goroutines</h2>
+<p>Imagine you need to process 1,00,000 images, make API calls to validate 500,000 email addresses, or perform complex calculations on a massive dataset. The naive approach might look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Don&#39;t do this!</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">item</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">hugeSlice</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">item</span> <span style="color:#a6e22e">Item</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// process item</span>
+</span></span><span style="display:flex;"><span>    }(<span style="color:#a6e22e">item</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>While this code will work for small datasets, it becomes problematic at scale:</p>
+<ul>
+<li>
+<p><strong>Memory explosion</strong>: Each goroutine consumes ~2KB of stack space. For 1M items, that&rsquo;s 2gb in goroutine allocation alone.</p>
+</li>
+<li>
+<p><strong>CPU thrashing</strong>: Too many goroutines lead to excessive context switching</p>
+</li>
+<li>
+<p><strong>Resource exhaustion</strong>: You might hit system limits on the number of threads</p>
+</li>
+</ul>
+<h2 id="the-solution-worker-pools">The Solution: Worker Pools</h2>
+<p>Worker pools solve this by maintaining a fixed number of worker goroutines that process jobs from a shared queue. This gives you:</p>
+<ul>
+<li><strong>Controlled resource usage</strong>: Fixed memory footprint regardless of job count</li>
+<li><strong>Better performance</strong>: Optimal number of workers for your system</li>
+<li><strong>Backpressure</strong>: Built-in queue management prevents overwhelming your system</li>
+</ul>
+<h2 id="introducing-bigopool">Introducing bigopool</h2>
+<p><code>bigopool</code> was designed with simplicity and performance in mind. It provides two main abstractions:</p>
+<ol>
+<li><strong>Worker Pool</strong>: For processing large numbers of jobs with controlled concurrency</li>
+<li><strong>Parallel Execution</strong>: For running a small number of functions concurrently</li>
+</ol>
+<p>Let me show you how both work in practice.</p>
+<h2 id="worker-pool-in-action">Worker Pool in Action</h2>
+<p>The worker pool is perfect when you have many similar tasks to process. Here&rsquo;s how it works:</p>
+<h3 id="1-define-your-job">1. Define Your Job</h3>
+<p>First, implement the <code>Job</code> interface by defining an <code>Execute()</code> method:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ImageProcessingJob</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ImagePath</span>  <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">OutputPath</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Quality</span>    <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">j</span> <span style="color:#a6e22e">ImageProcessingJob</span>) <span style="color:#a6e22e">Execute</span>() (<span style="color:#a6e22e">bigopool</span>.<span style="color:#a6e22e">Result</span>, <span style="color:#66d9ef">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Simulate image processing</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Millisecond</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">result</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">interface</span>{}{
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;input&#34;</span>:      <span style="color:#a6e22e">j</span>.<span style="color:#a6e22e">ImagePath</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;output&#34;</span>:     <span style="color:#a6e22e">j</span>.<span style="color:#a6e22e">OutputPath</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;size_kb&#34;</span>:    <span style="color:#ae81ff">1024</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;processed&#34;</span>:  <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>, <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="2-create-and-configure-the-dispatcher">2. Create and Configure the Dispatcher</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Create a dispatcher with 5 workers and a queue capacity of 100</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dispatcher</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bigopool</span>.<span style="color:#a6e22e">NewDispatcher</span>(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Start the workers</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dispatcher</span>.<span style="color:#a6e22e">Run</span>()
+</span></span></code></pre></div><h3 id="3-enqueue-jobs-and-collect-results">3. Enqueue Jobs and Collect Results</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Add jobs to the queue</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">imagePaths</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;image1.jpg&#34;</span>, <span style="color:#e6db74">&#34;image2.jpg&#34;</span>, <span style="color:#e6db74">&#34;image3.jpg&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">path</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">imagePaths</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">job</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ImageProcessingJob</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ImagePath</span>:  <span style="color:#a6e22e">path</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">OutputPath</span>: <span style="color:#e6db74">&#34;processed_&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">path</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Quality</span>:    <span style="color:#ae81ff">85</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dispatcher</span>.<span style="color:#a6e22e">Enqueue</span>(<span style="color:#a6e22e">job</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Wait for all jobs to complete and collect results</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">results</span>, <span style="color:#a6e22e">errors</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dispatcher</span>.<span style="color:#a6e22e">Wait</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Processed %d images\n&#34;</span>, len(<span style="color:#a6e22e">results</span>))
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">IsEmpty</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Encountered %d errors\n&#34;</span>, len(<span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">All</span>()))
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="parallel-execution-for-quick-tasks">Parallel Execution for Quick Tasks</h2>
+<p>Sometimes you don&rsquo;t need a full worker pool—you just want to run a few functions concurrently. The <code>Parallel</code> function is perfect for this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">FetchUserProfile</span>(<span style="color:#a6e22e">userID</span> <span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">error</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">user</span> <span style="color:#a6e22e">User</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">posts</span> []<span style="color:#a6e22e">Post</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">followers</span> []<span style="color:#a6e22e">User</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Run multiple API calls in parallel</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">errs</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bigopool</span>.<span style="color:#a6e22e">Parallel</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">func</span>() <span style="color:#66d9ef">error</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">api</span>.<span style="color:#a6e22e">GetUser</span>(<span style="color:#a6e22e">userID</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">func</span>() <span style="color:#66d9ef">error</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">posts</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">api</span>.<span style="color:#a6e22e">GetUserPosts</span>(<span style="color:#a6e22e">userID</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">func</span>() <span style="color:#66d9ef">error</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">followers</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">api</span>.<span style="color:#a6e22e">GetUserFollowers</span>(<span style="color:#a6e22e">userID</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">errs</span>.<span style="color:#a6e22e">IsEmpty</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">errs</span>.<span style="color:#a6e22e">ToError</span>()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// All API calls completed successfully</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;User: %s, Posts: %d, Followers: %d\n&#34;</span>, 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">Name</span>, len(<span style="color:#a6e22e">posts</span>), len(<span style="color:#a6e22e">followers</span>))
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="almostreal-world-example-web-scraper">(Almost)Real-World Example: Web Scraper</h2>
+<p>Let&rsquo;s build a practical example—a web scraper that fetches multiple URLs concurrently:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">WebScrapingJob</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">URL</span>        <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Timeout</span>    <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">UserAgent</span>  <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">j</span> <span style="color:#a6e22e">WebScrapingJob</span>) <span style="color:#a6e22e">Execute</span>() (<span style="color:#a6e22e">bigopool</span>.<span style="color:#a6e22e">Result</span>, <span style="color:#66d9ef">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">client</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Client</span>{<span style="color:#a6e22e">Timeout</span>: <span style="color:#a6e22e">j</span>.<span style="color:#a6e22e">Timeout</span>}
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">NewRequest</span>(<span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#a6e22e">j</span>.<span style="color:#a6e22e">URL</span>, <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Header</span>.<span style="color:#a6e22e">Set</span>(<span style="color:#e6db74">&#34;User-Agent&#34;</span>, <span style="color:#a6e22e">j</span>.<span style="color:#a6e22e">UserAgent</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">resp</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Do</span>(<span style="color:#a6e22e">req</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;failed to fetch %s: %w&#34;</span>, <span style="color:#a6e22e">j</span>.<span style="color:#a6e22e">URL</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">Body</span>.<span style="color:#a6e22e">Close</span>()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ioutil</span>.<span style="color:#a6e22e">ReadAll</span>(<span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">Body</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>, <span style="color:#a6e22e">err</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">WebScrapingResult</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">URL</span>:        <span style="color:#a6e22e">j</span>.<span style="color:#a6e22e">URL</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">StatusCode</span>: <span style="color:#a6e22e">resp</span>.<span style="color:#a6e22e">StatusCode</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">BodySize</span>:   len(<span style="color:#a6e22e">body</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Content</span>:    string(<span style="color:#a6e22e">body</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">FetchedAt</span>:  <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>(),
+</span></span><span style="display:flex;"><span>    }, <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">WebScrapingResult</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">URL</span>        <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">StatusCode</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">BodySize</span>   <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Content</span>    <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">FetchedAt</span>  <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Time</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">ScrapeWebsites</span>(<span style="color:#a6e22e">urls</span> []<span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Configure for 10 concurrent workers with a buffer queue of 500</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dispatcher</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bigopool</span>.<span style="color:#a6e22e">NewDispatcher</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">500</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dispatcher</span>.<span style="color:#a6e22e">Run</span>()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Enqueue all scraping jobs</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">url</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">urls</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">job</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">WebScrapingJob</span>{
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">URL</span>:       <span style="color:#a6e22e">url</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Timeout</span>:   <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">30</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">UserAgent</span>: <span style="color:#e6db74">&#34;bigopool-scraper/1.0&#34;</span>,
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">dispatcher</span>.<span style="color:#a6e22e">Enqueue</span>(<span style="color:#a6e22e">job</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Wait for completion</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">results</span>, <span style="color:#a6e22e">errors</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dispatcher</span>.<span style="color:#a6e22e">Wait</span>()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Process results</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">result</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">results</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">scrapedData</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">result</span>.(<span style="color:#a6e22e">WebScrapingResult</span>); <span style="color:#a6e22e">ok</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;✓ %s (%d bytes, status: %d)\n&#34;</span>, 
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">scrapedData</span>.<span style="color:#a6e22e">URL</span>, <span style="color:#a6e22e">scrapedData</span>.<span style="color:#a6e22e">BodySize</span>, <span style="color:#a6e22e">scrapedData</span>.<span style="color:#a6e22e">StatusCode</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Handle errors</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">All</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;✗ Error: %v\n&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="performance-and-benchmarks">Performance and Benchmarks</h2>
+<p>One of the things I&rsquo;m most proud of about <code>bigopool</code> is its performance. The library is designed to minimize allocations and overhead. Here are some benchmark results from a potato MacBook Pro from 2016:</p>
+<pre tabindex="0"><code>Benchmark5Workers1000Queue    2190982    566 ns/op    98 B/op    0 allocs/op
+Benchmark10Workers100Queue    2168791    559 ns/op    79 B/op    0 allocs/op
+Benchmark20Workers200Queue    2159338    572 ns/op    80 B/op    0 allocs/op
+</code></pre><p>These benchmarks show that <code>bigopool</code> can process jobs with sub-microsecond latency and minimal memory allocations, making it suitable for high-throughput applications.</p>
+<h2 id="advanced-features">Advanced Features</h2>
+<h3 id="cancelable-parallel-execution">Cancelable Parallel Execution</h3>
+<p>For scenarios where you want to cancel remaining operations if one fails, use <code>CancelableParallel</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">ctx</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">errs</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bigopool</span>.<span style="color:#a6e22e">CancelableParallel</span>(<span style="color:#a6e22e">ctx</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">ctx</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Context</span>) <span style="color:#66d9ef">error</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">criticalOperation1</span>(<span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">ctx</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Context</span>) <span style="color:#66d9ef">error</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">criticalOperation2</span>(<span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">ctx</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Context</span>) <span style="color:#66d9ef">error</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">criticalOperation3</span>(<span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>If any operation fails, the context is canceled and remaining operations can detect this and exit early.</p>
+<h3 id="thread-safe-error-handling">Thread-Safe Error Handling</h3>
+<p><code>bigopool</code> includes a thread-safe error collection mechanism. The <code>Errors</code> interface provides several useful methods:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">results</span>, <span style="color:#a6e22e">errors</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dispatcher</span>.<span style="color:#a6e22e">Wait</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Check if any errors occurred</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">IsEmpty</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Get all errors as a slice</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">allErrors</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">All</span>()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Processing failed with %d errors: %v&#34;</span>, 
+</span></span><span style="display:flex;"><span>        len(<span style="color:#a6e22e">allErrors</span>), <span style="color:#a6e22e">combinedError</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="design-philosophy">Design Philosophy</h2>
+<p>When building <code>bigopool</code>, I focused on several key principles:</p>
+<ol>
+<li><strong>Simplicity</strong>: The API should be intuitive and require minimal boilerplate.  Note that the library won&rsquo;t automatically handle failed jobs but will let you know of them.</li>
+<li><strong>Performance</strong>: Zero allocations in the hot path where possible</li>
+<li><strong>Safety</strong>: Thread-safe by default with proper error handling.</li>
+<li><strong>Flexibility</strong>: Support both worker pool and simple parallel execution patterns</li>
+</ol>
+<p>The library intentionally keeps the interface minimal—you implement one method (<code>Execute()</code>) and the library handles the rest.</p>
+<h2 id="when-to-use-bigopool">When to Use bigopool</h2>
+<p>I consider <code>bigopool</code> a good option for:</p>
+<ul>
+<li><strong>High-volume job processing</strong>: Image processing, data transformation, API calls, batch processing all your users to build email message content</li>
+<li><strong>I/O-bound operations</strong>: File processing, database operations, web scraping</li>
+<li><strong>Batch processing</strong>: ETL jobs, report generation, bulk operations</li>
+<li><strong>Microservice communication</strong>: Parallel API calls, data aggregation</li>
+</ul>
+<p>It might be overkill for:</p>
+<ul>
+<li><strong>One-off parallel tasks</strong>: Use regular goroutines</li>
+<li><strong>CPU-bound work with optimal worker count</strong>: Consider <code>runtime.GOMAXPROCS(0)</code> workers</li>
+<li><strong>Real-time streaming</strong>: Consider channels and select statements</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Building <code>bigopool</code> taught me a lot about Go&rsquo;s concurrency primitives and the importance of controlling resource usage in high-throughput applications. The library has been used in production systems processing dozens of millions of jobs, and I&rsquo;m proud of how it balances simplicity with performance.</p>
+<p>Try it out in your next project:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go get -u github.com/bigodines/bigopool
+</span></span></code></pre></div><p>For more, visit bigopool&rsquo;s <a href="https://github.com/bigodines/bigopool">GitHub</a>. If you find a bug or have ideas for improvements, contributions are always welcome!</p>
+<hr>
+<p><em>If this library saves you time or helps with your project, I&rsquo;d love to hear about it. You can find me on LinkedIn <a href="https://linkedin.com/in/bigodines">@bigodines</a>.</em></p>
+
+        </div>
+        
+        
+        <footer class="post-footer">
+            <div class="post-navigation">
+                
+                <a href="/posts/hello-world/" class="nav-prev">← Hello world</a>
+                
+                
+            </div>
+        </footer>
+        
+    </article>
+</div>
+
+    </main>
+    
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <p>&copy; 2025 Matheus Mendes. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/index.xml" class="footer-link">RSS</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    
+    <script src="/js/main.js"></script>
+</body>
+</html>
