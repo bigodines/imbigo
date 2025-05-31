@@ -1,5 +1,5 @@
 ---
-title: Meet Bigopool
+title: High-performance worker pools with Bigopool
 date: 2025-05-29T20:45:55-07:00
 draft: false
 description: Building High-Performance Concurrent Applications with `bigopool`

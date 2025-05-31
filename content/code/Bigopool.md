@@ -1,9 +1,9 @@
 ---
-title: Bigopool pool pool pool pool
+title: Bigopool
 date: 2025-05-24T22:15:45-07:00
 draft: false
 type: code
-description: 
+description: High-performance lightweight worker pools in Go
 technologies:
   - Go
 github: https://github.com/bigodines/bigopool
@@ -13,17 +13,8 @@ weight: 1
 ---
 
 
+###   High performance async processing in Go
 
-##   High performance async processing in Go
 
-More on the blog post: [Imbigo Blog/Bigopool|Bigopool](Imbigo Blog/Bigopool|Bigopool)
+More on the blog post: [Bigopool](/posts/bigopool/)
   
-
----
-
-  
-
-**Project Type:** #project #go #bigopool 
-
-**Status:** active
-
