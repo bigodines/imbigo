@@ -15,7 +15,7 @@
             <div class="projects-grid">
                 {{ range $projects.ByWeight.ByDate.Reverse }}
                 <article class="project-card {{ if .Params.featured }}featured{{ end }}">
-                    <div class="project-card-header">
+                    <div class="project-header">
                         <h3 class="project-title">
                             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
                         </h3>

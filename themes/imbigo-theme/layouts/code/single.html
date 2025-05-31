@@ -11,11 +11,14 @@
                 <span class="project-status status-{{ .Params.status | lower }}">{{ .Params.status }}</span>
                 {{ end }}
             </div>
-            
-            {{ if .Params.description }}
-            <p class="project-description">{{ .Params.description }}</p>
-            {{ end }}
-            
+        </header>
+        
+        <div class="project-content">
+            {{ .Content }}
+        </div>
+        
+        {{ if or .Params.github .Params.demo .Params.technologies }}
+        <div class="project-footer-content">
             {{ if or .Params.github .Params.demo }}
             <div class="project-links">
                 {{ if .Params.github }}
@@ -41,11 +44,8 @@
                 </div>
             </div>
             {{ end }}
-        </header>
-        
-        <div class="project-content">
-            {{ .Content }}
         </div>
+        {{ end }}
         
         <footer class="project-footer">
             <div class="project-navigation">
