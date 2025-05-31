@@ -9,7 +9,7 @@
     <lastBuildDate>Thu, 29 May 2025 20:45:55 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Meet Bigopool</title>
+      <title>High-performance worker pools with Bigopool</title>
       <link>http://localhost:1313/posts/bigopool/</link>
       <pubDate>Thu, 29 May 2025 20:45:55 -0700</pubDate>
       <guid>http://localhost:1313/posts/bigopool/</guid>

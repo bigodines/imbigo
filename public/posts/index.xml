@@ -9,7 +9,7 @@
     <lastBuildDate>Thu, 29 May 2025 20:45:55 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Meet Bigopool</title>
+      <title>High-performance worker pools with Bigopool</title>
       <link>http://localhost:1313/posts/bigopool/</link>
       <pubDate>Thu, 29 May 2025 20:45:55 -0700</pubDate>
       <guid>http://localhost:1313/posts/bigopool/</guid>
@@ -20,21 +20,21 @@
       <link>http://localhost:1313/posts/hello-world/</link>
       <pubDate>Sat, 24 May 2025 21:58:06 -0700</pubDate>
       <guid>http://localhost:1313/posts/hello-world/</guid>
-      <description>&lt;hr&gt;&#xA;&lt;p&gt;I got a new domain and a goal to write more in 2025 so yeah. Welcome to my website.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Tags:&lt;/strong&gt; #blog&lt;/p&gt;</description>
+      <description>&lt;p&gt;I got a new domain and a goal to write more in 2025 so yeah. Welcome to my website.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Tags:&lt;/strong&gt; #blog&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Welcome to My Blog</title>
-      <link>http://localhost:1313/posts/welcome/</link>
-      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/welcome/</guid>
-      <description>&lt;p&gt;Welcome to my personal blog! This is the first post on my new Hugo-powered website.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-to-expect&#34;&gt;What to Expect&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;ll be sharing my thoughts and experiences on:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Software Development&lt;/strong&gt;: Tips, tricks, and lessons learned&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Technology Trends&lt;/strong&gt;: My take on emerging technologies&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Open Source&lt;/strong&gt;: Projects I&amp;rsquo;m working on and contributing to&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Personal Growth&lt;/strong&gt;: My journey as a developer&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;why-hugo&#34;&gt;Why Hugo?&lt;/h2&gt;&#xA;&lt;p&gt;I chose Hugo for this blog because:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Speed&lt;/strong&gt;: Hugo generates static sites incredibly fast&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Simplicity&lt;/strong&gt;: Easy to write content in Markdown&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Flexibility&lt;/strong&gt;: Powerful templating system&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: Static sites are fast and secure&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
-    </item>
-    <item>
-      <title>Building Modern Web Applications</title>
+      <title></title>
       <link>http://localhost:1313/posts/modern-web-development/</link>
-      <pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/modern-web-development/</guid>
-      <description>&lt;p&gt;In today&amp;rsquo;s fast-paced web development landscape, building modern, performant applications requires careful consideration of tools, practices, and user experience.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-modern-web-stack&#34;&gt;The Modern Web Stack&lt;/h2&gt;&#xA;&lt;p&gt;The web development ecosystem has evolved significantly. Here&amp;rsquo;s what I consider essential for modern web applications:&lt;/p&gt;&#xA;&lt;h3 id=&#34;frontend-considerations&#34;&gt;Frontend Considerations&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Performance First&lt;/strong&gt;: Optimize for Core Web Vitals&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Accessibility&lt;/strong&gt;: Build for everyone from the start&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Progressive Enhancement&lt;/strong&gt;: Ensure basic functionality works everywhere&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Mobile-First Design&lt;/strong&gt;: Most users are on mobile devices&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;technology-choices&#34;&gt;Technology Choices&lt;/h3&gt;&#xA;&lt;p&gt;When selecting technologies for a new project, I evaluate:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;Community Support&lt;/strong&gt;: Active maintenance and community&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Learning Curve&lt;/strong&gt;: Team expertise and onboarding time&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: Bundle size and runtime performance&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Ecosystem&lt;/strong&gt;: Available libraries and tools&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/posts/welcome/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/welcome/</guid>
+      <description></description>
     </item>
   </channel>
 </rss>

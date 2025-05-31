@@ -32,6 +32,9 @@
     <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-05-29T20:45:55-07:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/about/</loc>
+    <lastmod>2025-05-29T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/code/</loc>
     <lastmod>2025-05-24T22:15:45-07:00</lastmod>
   </url><url>
@@ -44,28 +47,8 @@
     <loc>http://localhost:1313/categories/random/</loc>
     <lastmod>2025-05-24T21:58:06-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
-    <lastmod>2025-05-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/hugo/</loc>
-    <lastmod>2025-05-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/welcome/</loc>
-    <lastmod>2025-05-24T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/posts/modern-web-development/</loc>
   </url><url>
     <loc>http://localhost:1313/posts/welcome/</loc>
-    <lastmod>2025-05-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/best-practices/</loc>
-    <lastmod>2025-05-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/modern-web-development/</loc>
-    <lastmod>2025-05-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/javascript/</loc>
-    <lastmod>2025-05-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/web-development/</loc>
-    <lastmod>2025-05-23T00:00:00+00:00</lastmod>
   </url>
 </urlset>
