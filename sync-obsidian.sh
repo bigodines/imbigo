@@ -59,8 +59,10 @@ process_markdown_file() {
     
     # Process the file
     while IFS= read -r line; do
-        # Convert Obsidian wikilinks [[Page Name]] to regular markdown links
-        # This is a basic conversion - you might need to adjust based on your needs
+        # Convert Obsidian wikilinks with display text [[Page Name|Display Text]] to markdown links
+        line=$(echo "$line" | sed 's/\[\[\([^|]*\)|\([^]]*\)\]\]/[\2](\1)/g')
+        
+        # Convert simple Obsidian wikilinks [[Page Name]] to regular markdown links
         line=$(echo "$line" | sed 's/\[\[\([^]]*\)\]\]/[\1](\1)/g')
         
         # Convert Obsidian image links ![[image.png]] to Hugo format
