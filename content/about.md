@@ -17,4 +17,4 @@ Hi, I'm **Matheus Mendes**, a passionate software developer with a love for crea
 
 ## Let's Connect
 
-https://www.linkedin.com/in/bigodines
+[LinkedIn](https://www.linkedin.com/in/bigodines)
