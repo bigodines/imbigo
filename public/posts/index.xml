@@ -2,38 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on </title>
-    <link>http://localhost:1313/posts/</link>
+    <link>https://imbigo.net/posts/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 29 May 2025 20:45:55 -0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://imbigo.net/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>High-performance worker pools with Bigopool</title>
-      <link>http://localhost:1313/posts/bigopool/</link>
+      <link>https://imbigo.net/posts/bigopool/</link>
       <pubDate>Thu, 29 May 2025 20:45:55 -0700</pubDate>
-      <guid>http://localhost:1313/posts/bigopool/</guid>
-      <description>&lt;h1 id=&#34;building-high-performance-concurrent-applications-with-bigopool&#34;&gt;Building High-Performance Concurrent Applications with bigopool&lt;/h1&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Concurrency is one of Go&amp;rsquo;s greatest strengths, but managing goroutines effectively at scale can be challenging. When you have millions of tasks to process, spawning a goroutine for each one can quickly overwhelm your system with excessive memory usage and context switching overhead. This is where worker pools come to the rescue.&lt;/p&gt;&#xA;&lt;p&gt;A few years ago, I created &lt;a href=&#34;https://github.com/bigodines/bigopool&#34;&gt;bigopool&lt;/a&gt;, a lightweight Go library that implements high-performance worker pools with elegant error and result handling. Today, I have finally decided to write about it.&lt;/p&gt;</description>
+      <guid>https://imbigo.net/posts/bigopool/</guid>
+      <description>&lt;h1 id=&#34;building-high-performance-concurrent-applications-with-bigopool&#34;&gt;Building High-Performance Concurrent Applications with bigopool&lt;/h1&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Concurrency is one of Go&amp;rsquo;s greatest strengths, but managing goroutines effectively at scale can be challenging. When you have millions of tasks to process, spawning a goroutine for each one can quickly overwhelm your system with excessive memory usage and context switching overhead. This is where worker pools come to the rescue.&lt;/p&gt;&#xA;&lt;p&gt;A few years ago, I created &lt;a href=&#34;https://github.com/bigodines/bigopool&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;bigopool&lt;/a&gt;, a lightweight Go library that implements high-performance worker pools with elegant error and result handling. Today, I have finally decided to write about it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hello world</title>
-      <link>http://localhost:1313/posts/hello-world/</link>
+      <link>https://imbigo.net/posts/hello-world/</link>
       <pubDate>Sat, 24 May 2025 21:58:06 -0700</pubDate>
-      <guid>http://localhost:1313/posts/hello-world/</guid>
+      <guid>https://imbigo.net/posts/hello-world/</guid>
       <description>&lt;p&gt;I got a new domain and a goal to write more in 2025 so yeah. Welcome to my website.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Tags:&lt;/strong&gt; #blog&lt;/p&gt;</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/posts/modern-web-development/</link>
+      <link>https://imbigo.net/posts/welcome/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/modern-web-development/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/posts/welcome/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/welcome/</guid>
+      <guid>https://imbigo.net/posts/welcome/</guid>
       <description></description>
     </item>
   </channel>

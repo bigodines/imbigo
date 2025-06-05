@@ -2,53 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/code/bigopool/</loc>
+    <loc>https://imbigo.net/code/bigopool/</loc>
     <lastmod>2025-05-24T22:15:45-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/code/obsidian&#43;hugo-integration/</loc>
+    <loc>https://imbigo.net/code/obsidian&#43;hugo-integration/</loc>
     <lastmod>2025-05-24T21:59:05-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://imbigo.net/</loc>
     <lastmod>2025-05-29T20:45:55-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/bigopool/</loc>
+    <loc>https://imbigo.net/tags/bigopool/</loc>
     <lastmod>2025-05-29T20:45:55-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://imbigo.net/categories/</loc>
     <lastmod>2025-05-29T20:45:55-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/code/</loc>
+    <loc>https://imbigo.net/categories/code/</loc>
     <lastmod>2025-05-29T20:45:55-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/go/</loc>
+    <loc>https://imbigo.net/tags/go/</loc>
     <lastmod>2025-05-29T20:45:55-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/bigopool/</loc>
+    <loc>https://imbigo.net/posts/bigopool/</loc>
     <lastmod>2025-05-29T20:45:55-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://imbigo.net/posts/</loc>
     <lastmod>2025-05-29T20:45:55-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://imbigo.net/tags/</loc>
     <lastmod>2025-05-29T20:45:55-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://imbigo.net/about/</loc>
     <lastmod>2025-05-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/code/</loc>
+    <loc>https://imbigo.net/code/</loc>
     <lastmod>2025-05-24T22:15:45-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/blog/</loc>
+    <loc>https://imbigo.net/tags/blog/</loc>
     <lastmod>2025-05-24T21:58:06-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/hello-world/</loc>
+    <loc>https://imbigo.net/posts/hello-world/</loc>
     <lastmod>2025-05-24T21:58:06-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/random/</loc>
+    <loc>https://imbigo.net/categories/random/</loc>
     <lastmod>2025-05-24T21:58:06-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/modern-web-development/</loc>
-  </url><url>
-    <loc>http://localhost:1313/posts/welcome/</loc>
+    <loc>https://imbigo.net/posts/welcome/</loc>
   </url>
 </urlset>

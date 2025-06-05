@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>High-performance worker pools with Bigopool | </title>
@@ -84,7 +84,7 @@
             <h1 id="building-high-performance-concurrent-applications-with-bigopool">Building High-Performance Concurrent Applications with bigopool</h1>
 <h2 id="introduction">Introduction</h2>
 <p>Concurrency is one of Go&rsquo;s greatest strengths, but managing goroutines effectively at scale can be challenging. When you have millions of tasks to process, spawning a goroutine for each one can quickly overwhelm your system with excessive memory usage and context switching overhead. This is where worker pools come to the rescue.</p>
-<p>A few years ago, I created <a href="https://github.com/bigodines/bigopool">bigopool</a>, a lightweight Go library that implements high-performance worker pools with elegant error and result handling. Today, I have finally decided to write about it.</p>
+<p>A few years ago, I created <a href="https://github.com/bigodines/bigopool" target="_blank" rel="noopener">bigopool</a>, a lightweight Go library that implements high-performance worker pools with elegant error and result handling. Today, I have finally decided to write about it.</p>
 <h2 id="the-problem-too-many-goroutines">The Problem: Too Many Goroutines</h2>
 <p>Imagine you need to process 1,00,000 images, make API calls to validate 500,000 email addresses, or perform complex calculations on a massive dataset. The naive approach might look like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Don&#39;t do this!</span>
@@ -350,9 +350,9 @@ Benchmark20Workers200Queue    2159338    572 ns/op    80 B/op    0 allocs/op
 <p>Building <code>bigopool</code> taught me a lot about Go&rsquo;s concurrency primitives and the importance of controlling resource usage in high-throughput applications. The library has been used in production systems processing dozens of millions of jobs, and I&rsquo;m proud of how it balances simplicity with performance.</p>
 <p>Try it out in your next project:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>go get -u github.com/bigodines/bigopool
-</span></span></code></pre></div><p>For more, visit bigopool&rsquo;s <a href="https://github.com/bigodines/bigopool">GitHub</a>. If you find a bug or have ideas for improvements, contributions are always welcome!</p>
+</span></span></code></pre></div><p>For more, visit bigopool&rsquo;s <a href="https://github.com/bigodines/bigopool" target="_blank" rel="noopener">GitHub</a>. If you find a bug or have ideas for improvements, contributions are always welcome!</p>
 <hr>
-<p><em>If this library saves you time or helps with your project, I&rsquo;d love to hear about it. You can find me on LinkedIn <a href="https://linkedin.com/in/bigodines">@bigodines</a>.</em></p>
+<p><em>If this library saves you time or helps with your project, I&rsquo;d love to hear about it. You can find me on LinkedIn <a href="https://linkedin.com/in/bigodines" target="_blank" rel="noopener">@bigodines</a>.</em></p>
 
         </div>
         
