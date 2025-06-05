@@ -34,7 +34,7 @@
       <link>https://imbigo.net/about/</link>
       <pubDate>Thu, 29 May 2025 00:00:00 +0000</pubDate>
       <guid>https://imbigo.net/about/</guid>
-      <description>&lt;p&gt;Hi, I&amp;rsquo;m &lt;strong&gt;Matheus Mendes&lt;/strong&gt;, a passionate software developer with a love for creating elegant solutions to complex problems.&lt;/p&gt;&#xA;&lt;h2 id=&#34;my-journey&#34;&gt;My Journey&lt;/h2&gt;&#xA;&lt;p&gt;// TODO&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-do&#34;&gt;What I Do&lt;/h2&gt;&#xA;&lt;p&gt;// TODO&lt;/p&gt;&#xA;&lt;h2 id=&#34;lets-connect&#34;&gt;Let&amp;rsquo;s Connect&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.linkedin.com/in/bigodines&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LinkedIn&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Hi, I&amp;rsquo;m Matheus Mendes but most of my friends call me &lt;strong&gt;Bigo&lt;/strong&gt;. I&amp;rsquo;m a software engineer with 20 years of professional coding experience, 10 of these working in Silicon Valley startups. I recently bought a cool domain name and decided to start a personal log of projects, advice and interesting stories. I have no intention of updating this more than once or twice a year unless major life events happen.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hello world</title>
@@ -42,13 +42,6 @@
       <pubDate>Sat, 24 May 2025 21:58:06 -0700</pubDate>
       <guid>https://imbigo.net/posts/hello-world/</guid>
       <description>&lt;p&gt;I got a new domain and a goal to write more in 2025 so yeah. Welcome to my website.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Tags:&lt;/strong&gt; #blog&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title></title>
-      <link>https://imbigo.net/posts/welcome/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://imbigo.net/posts/welcome/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>
