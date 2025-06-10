@@ -10,7 +10,6 @@ categories:
   - code
 author: Matheus Mendes
 ---
-# Building High-Performance Concurrent Applications with bigopool
 
 ## Introduction
 
