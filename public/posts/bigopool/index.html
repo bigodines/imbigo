@@ -81,8 +81,7 @@
         </header>
         
         <div class="post-content">
-            <h2 id="introduction">Introduction</h2>
-<p>Concurrency is one of Go&rsquo;s greatest strengths, but managing goroutines effectively at scale can be challenging. When you have millions of tasks to process, spawning a goroutine for each one can quickly overwhelm your system with excessive memory usage and context switching overhead. This is where worker pools come to the rescue.</p>
+            <p>Concurrency is one of Go&rsquo;s greatest strengths, but managing goroutines effectively at scale can be challenging. When you have millions of tasks to process, spawning a goroutine for each one can quickly overwhelm your system with excessive memory usage and context switching overhead. This is where worker pools come to the rescue.</p>
 <p>A few years ago, I created <a href="https://github.com/bigodines/bigopool" target="_blank" rel="noopener">bigopool</a>, a lightweight Go library that implements high-performance worker pools with elegant error and result handling. Today, I have finally decided to write about it.</p>
 <h2 id="the-problem-too-many-goroutines">The Problem: Too Many Goroutines</h2>
 <p>Imagine you need to process 1,00,000 images, make API calls to validate 500,000 email addresses, or perform complex calculations on a massive dataset. The naive approach might look like this:</p>
@@ -362,7 +361,7 @@ Benchmark20Workers200Queue    2159338    572 ns/op    80 B/op    0 allocs/op
                 <a href="/posts/hello-world/" class="nav-prev">← Hello world</a>
                 
                 
-                <a href="/posts/rotdector/" class="nav-next">Rotdector →</a>
+                <a href="/posts/rotdector/" class="nav-next">Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check →</a>
                 
             </div>
         </footer>

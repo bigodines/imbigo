@@ -3,7 +3,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rotdector | </title>
+    <title>Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check | </title>
     <meta name="description" content="Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check">
     <meta name="author" content="Matheus Mendes">
     
@@ -61,7 +61,7 @@
 <div class="container">
     <article class="single-post">
         <header class="post-header">
-            <h1 class="post-title">Rotdector</h1>
+            <h1 class="post-title">Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check</h1>
             
             <div class="post-meta">
                 <time datetime="2025-06-16">
@@ -83,8 +83,7 @@
         </header>
         
         <div class="post-content">
-            <h1 id="fighting-code-rot-how-i-built-a-tool-to-keep-technical-debt-in-check">Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check</h1>
-<p><em>&ldquo;This is a temporary fix. I&rsquo;ll come back for it later&rdquo;</em> – Famous last words that every developer has uttered at least once.</p>
+            <p><em>&ldquo;This is a temporary fix. I&rsquo;ll come back for it later&rdquo;</em> – Famous last words that every developer has uttered at least once.</p>
 <p>We&rsquo;ve all been there. You&rsquo;re staring down a deadline, your PM is breathing down your neck, and you need to ship something that works. So you write a quick hack, slap a <code>// TODO: refactor this ugly mess</code> comment on top, and move on with your life.</p>
 <p>But here&rsquo;s the thing about &ldquo;later&rdquo; – it has a funny way of never actually arriving.</p>
 <p>Six months pass. That &ldquo;temporary&rdquo; fix is still lurking in your codebase like an uninvited guest who&rsquo;s overstayed their welcome. The original developer has probably moved teams, taking all the context with them. Now nobody wants to touch that code because, hey, it works, and why fix what ain&rsquo;t broken, right?</p>
@@ -157,10 +156,10 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># GitHub Actions example</span>
 </span></span><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Check for rotting code</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    wget https://github.com/bigodines/rotdetector/releases/latest/download/rotdetector
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    wget https://github.com/bigodines/rotdetector/releases/download/v1.0.0/rotdetector
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    chmod +x rotdetector
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ./rotdetector -dir=. -ci</span>
-</span></span></code></pre></div><p>When it finds expired comments, your build fails. No ifs, ands, or buts. You either fix the code, extend the deadline with a good reason, or your PR doesn&rsquo;t merge.</p>
+</span></span></code></pre></div><p>When it finds expired comments, your build fails. No ifs, ands, or buts. You either fix the code, extend the deadline with a good reason, or PRs won&rsquo;t merge.</p>
 <p>It&rsquo;s like having a really persistent team member who never forgets and never lets things slide.</p>
 <h2 id="the-psychology-behind-it">The Psychology Behind It</h2>
 <p>Here&rsquo;s what I found interesting: just adding expiration dates changes how people think about code. Instead of &ldquo;I&rsquo;ll fix this someday,&rdquo; it becomes &ldquo;I&rsquo;ll fix this by March, or I&rsquo;ll have to explain why I can&rsquo;t.&rdquo;</p>

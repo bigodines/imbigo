@@ -11,8 +11,6 @@ categories:
 author: Matheus Mendes
 ---
 
-## Introduction
-
 Concurrency is one of Go's greatest strengths, but managing goroutines effectively at scale can be challenging. When you have millions of tasks to process, spawning a goroutine for each one can quickly overwhelm your system with excessive memory usage and context switching overhead. This is where worker pools come to the rescue.
 
 A few years ago, I created [bigopool](https://github.com/bigodines/bigopool), a lightweight Go library that implements high-performance worker pools with elegant error and result handling. Today, I have finally decided to write about it.

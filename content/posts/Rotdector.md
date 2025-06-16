@@ -1,5 +1,5 @@
 ---
-title: Rotdector
+title: "Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check"
 date: 2025-06-16T15:31:37+08:00
 draft: false
 description: "Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check"
@@ -11,8 +11,6 @@ categories:
   - code
 author: Matheus Mendes
 ---
-# Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check
-
 *"This is a temporary fix. I'll come back for it later"* – Famous last words that every developer has uttered at least once.
 
 We've all been there. You're staring down a deadline, your PM is breathing down your neck, and you need to ship something that works. So you write a quick hack, slap a `// TODO: refactor this ugly mess` comment on top, and move on with your life.
