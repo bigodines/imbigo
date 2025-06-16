@@ -2,17 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Go on </title>
-    <link>https://imbigo.net/tags/go/</link>
+    <link>http://localhost:1313/tags/go/</link>
     <description>Recent content in Go on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 May 2025 20:45:55 -0700</lastBuildDate>
-    <atom:link href="https://imbigo.net/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Jun 2025 15:31:37 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rotdector</title>
+      <link>http://localhost:1313/posts/rotdector/</link>
+      <pubDate>Mon, 16 Jun 2025 15:31:37 +0800</pubDate>
+      <guid>http://localhost:1313/posts/rotdector/</guid>
+      <description>&lt;h1 id=&#34;fighting-code-rot-how-i-built-a-tool-to-keep-technical-debt-in-check&#34;&gt;Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;&amp;ldquo;This is a temporary fix. I&amp;rsquo;ll come back for it later&amp;rdquo;&lt;/em&gt; – Famous last words that every developer has uttered at least once.&lt;/p&gt;&#xA;&lt;p&gt;We&amp;rsquo;ve all been there. You&amp;rsquo;re staring down a deadline, your PM is breathing down your neck, and you need to ship something that works. So you write a quick hack, slap a &lt;code&gt;// TODO: refactor this ugly mess&lt;/code&gt; comment on top, and move on with your life.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>High-performance worker pools with Bigopool</title>
-      <link>https://imbigo.net/posts/bigopool/</link>
+      <link>http://localhost:1313/posts/bigopool/</link>
       <pubDate>Thu, 29 May 2025 20:45:55 -0700</pubDate>
-      <guid>https://imbigo.net/posts/bigopool/</guid>
+      <guid>http://localhost:1313/posts/bigopool/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Concurrency is one of Go&amp;rsquo;s greatest strengths, but managing goroutines effectively at scale can be challenging. When you have millions of tasks to process, spawning a goroutine for each one can quickly overwhelm your system with excessive memory usage and context switching overhead. This is where worker pools come to the rescue.&lt;/p&gt;&#xA;&lt;p&gt;A few years ago, I created &lt;a href=&#34;https://github.com/bigodines/bigopool&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;bigopool&lt;/a&gt;, a lightweight Go library that implements high-performance worker pools with elegant error and result handling. Today, I have finally decided to write about it.&lt;/p&gt;</description>
     </item>
   </channel>

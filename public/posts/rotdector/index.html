@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotdector | </title>
+    <meta name="description" content="Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check">
+    <meta name="author" content="Matheus Mendes">
+    
+    
+    <link rel="stylesheet" href="/css/main.css">
+    
+    
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW5VZSYX44"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-KW5VZSYX44');
+    </script>
+</head>
+<body>
+    <header class="header">
+    <div class="container">
+        <nav class="nav">
+            <a href="/" class="nav-brand"></a>
+            
+            <div class="nav-menu" id="nav-menu">
+                
+                <a href="/" class="nav-link ">
+                    Blog
+                </a>
+                
+                <a href="/about/" class="nav-link ">
+                    About
+                </a>
+                
+                <a href="/code/" class="nav-link ">
+                    Code
+                </a>
+                
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div>
+</header>
+
+    
+    <main>
+        
+<div class="container">
+    <article class="single-post">
+        <header class="post-header">
+            <h1 class="post-title">Rotdector</h1>
+            
+            <div class="post-meta">
+                <time datetime="2025-06-16">
+                    June 16, 2025
+                </time>
+                
+                <div class="post-tags">
+                    
+                    <span class="tag">#rotdetector</span>
+                    
+                    <span class="tag">#go</span>
+                    
+                    <span class="tag">#opensource</span>
+                    
+                </div>
+                
+            </div>
+            
+        </header>
+        
+        <div class="post-content">
+            <h1 id="fighting-code-rot-how-i-built-a-tool-to-keep-technical-debt-in-check">Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check</h1>
+<p><em>&ldquo;This is a temporary fix. I&rsquo;ll come back for it later&rdquo;</em> – Famous last words that every developer has uttered at least once.</p>
+<p>We&rsquo;ve all been there. You&rsquo;re staring down a deadline, your PM is breathing down your neck, and you need to ship something that works. So you write a quick hack, slap a <code>// TODO: refactor this ugly mess</code> comment on top, and move on with your life.</p>
+<p>But here&rsquo;s the thing about &ldquo;later&rdquo; – it has a funny way of never actually arriving.</p>
+<p>Six months pass. That &ldquo;temporary&rdquo; fix is still lurking in your codebase like an uninvited guest who&rsquo;s overstayed their welcome. The original developer has probably moved teams, taking all the context with them. Now nobody wants to touch that code because, hey, it works, and why fix what ain&rsquo;t broken, right?</p>
+<p>This is what we&rsquo;ve come to call <strong>code rot</strong> – the slow, inevitable decay that happens when our quick fixes become permanent fixtures.</p>
+<h2 id="why-our-current-approach-sucks">Why Our Current Approach Sucks</h2>
+<p>Let me paint you a picture from my own experience. I&rsquo;ve worked with teams where the codebase was littered with TODOs left and right. It&rsquo;s like archaeological layers of good intentions gone bad.</p>
+<p>The problem isn&rsquo;t that developers are lazy or don&rsquo;t care. It&rsquo;s that our tools and processes are fundamentally broken:</p>
+<ol>
+<li><strong>We&rsquo;re always in crisis mode</strong>: Startups are built around tight deadlines and moonshot experiments</li>
+<li><strong>Knowledge evaporates</strong>: People leave, switch teams, or simply forget why they wrote something</li>
+<li><strong>TODOs are invisible</strong>: They&rsquo;re scattered everywhere but never surface at the right time</li>
+<li><strong>JIRA tickets are too far from the code</strong>: That &ldquo;upgrade nodejs&rdquo; ticket will never get prioritized until it is too late.</li>
+</ol>
+<p>I&rsquo;ve seen TODOs that were literally older than the framework they were commenting on. It&rsquo;s both hilarious and terrifying.</p>
+<h2 id="my-solution-rotdetector">My Solution: RotDetector</h2>
+<p>After hitting this wall one too many times, I decided to build something about it. I needed a tool that would:</p>
+<ul>
+<li>Be dead simple to use</li>
+<li>Fast and able to parse large codebases without impacting the build job too much</li>
+<li>Work with whatever language my team was using</li>
+<li>Automatically yell at us when things got stale (aka: break the build)</li>
+<li>Play nice with our existing CI setup</li>
+</ul>
+<p>The result was <strong>RotDetector</strong> – a tool that treats code comments like food in your fridge. Give them an expiration date, and get reminded when they&rsquo;ve gone bad.</p>
+<h2 id="how-it-actually-works">How It Actually Works</h2>
+<p>The concept is stupidly simple (which is probably why it works). Instead of writing this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// TODO: refactor this when we have time
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">legacyMode</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ugly hack for backward compatibility
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">processLegacyData</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>You write this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// BestBy 06/2025: refactor this when we have time
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">legacyMode</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ugly hack for backward compatibility
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">processLegacyData</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>That&rsquo;s it. RotDetector scans your code, finds <code>BestBy</code> comments, checks if they&rsquo;re expired, and throws a fit if they are. It handles different date formats and works with Go, JavaScript/TypeScript, Python, and Ruby.</p>
+<p>You&rsquo;ll either have to address the issue by the date or change the expiration opening another PR and encouraging a discussion on why the date has been changed.</p>
+<h2 id="some-examples">Some examples</h2>
+<p>Here&rsquo;s how this looks in practice:</p>
+<h3 id="feature-flags-that-actually-get-removed">Feature Flags That Actually Get Removed</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// BestBy 12/2024: Remove feature flag after Q4 rollout</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">featureFlags</span>.<span style="color:#a6e22e">EnableNewDashboard</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">renderNewDashboard</span>(<span style="color:#a6e22e">ctx</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">renderLegacyDashboard</span>(<span style="color:#a6e22e">ctx</span>)
+</span></span></code></pre></div><p>I can&rsquo;t tell you how many times I&rsquo;ve seen feature flags that outlived the features they were supposed to toggle.</p>
+<h3 id="workarounds-with-exit-strategies">Workarounds with Exit Strategies</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># BestBy 03/2025: Remove when API v2 is stable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_data</span>(user_id):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> api_v2_client<span style="color:#f92672">.</span>get_user(user_id)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> APIException:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Fallback to v1 API</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> api_v1_client<span style="color:#f92672">.</span>get_user(user_id)
+</span></span></code></pre></div><h3 id="good-enough-for-now-code">&ldquo;Good Enough for Now&rdquo; Code</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// BestBy 08/2025: Profile and optimize after first deliverable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processItems</span>(<span style="color:#a6e22e">items</span>: <span style="color:#66d9ef">Item</span>[])<span style="color:#f92672">:</span> <span style="color:#a6e22e">ProcessedItem</span>[] {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Quick and dirty implementation for MVP
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> <span style="color:#f92672">=&gt;</span> ({
+</span></span><span style="display:flex;"><span>        ...<span style="color:#a6e22e">item</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">processed</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">timestamp</span>: <span style="color:#66d9ef">Date.now</span>()
+</span></span><span style="display:flex;"><span>    }));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The beauty is that it forces you to think about <em>when</em> you&rsquo;ll actually come back to fix things.</p>
+<h2 id="plugging-it-into-your-ci">Plugging It Into Your CI</h2>
+<p>This is where the magic happens. Add RotDetector to your CI pipeline, and suddenly those expired comments become everyone&rsquo;s problem:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># GitHub Actions example</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Check for rotting code</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    wget https://github.com/bigodines/rotdetector/releases/latest/download/rotdetector
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    chmod +x rotdetector
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ./rotdetector -dir=. -ci</span>
+</span></span></code></pre></div><p>When it finds expired comments, your build fails. No ifs, ands, or buts. You either fix the code, extend the deadline with a good reason, or your PR doesn&rsquo;t merge.</p>
+<p>It&rsquo;s like having a really persistent team member who never forgets and never lets things slide.</p>
+<h2 id="the-psychology-behind-it">The Psychology Behind It</h2>
+<p>Here&rsquo;s what I found interesting: just adding expiration dates changes how people think about code. Instead of &ldquo;I&rsquo;ll fix this someday,&rdquo; it becomes &ldquo;I&rsquo;ll fix this by March, or I&rsquo;ll have to explain why I can&rsquo;t.&rdquo;</p>
+<p>It&rsquo;s the difference between saying &ldquo;let&rsquo;s grab coffee sometime&rdquo; and &ldquo;let&rsquo;s grab coffee next Tuesday at 3 PM.&rdquo; One is a pleasant fiction, the other is a commitment.</p>
+<p>Plus, when your build breaks because of an expired comment, you can&rsquo;t just ignore it and hope someone else deals with it. The accountability is built-in.</p>
+<h2 id="getting-your-hands-dirty">Getting Your Hands Dirty</h2>
+<p>Want to try it out? It&rsquo;s pretty straightforward:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Grab the code and build it</span>
+</span></span><span style="display:flex;"><span>git clone git@github.com:bigodines/rotdetector.git
+</span></span><span style="display:flex;"><span>cd rotdetector
+</span></span><span style="display:flex;"><span>make build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run it on your project</span>
+</span></span><span style="display:flex;"><span>./bin/rotdetector -dir<span style="color:#f92672">=</span>/path/to/your/project
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Also check for TODOs while you&#39;re at it</span>
+</span></span><span style="display:flex;"><span>./bin/rotdetector -dir<span style="color:#f92672">=</span>/path/to/your/project -todo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Make it CI-friendly (no pretty colors)</span>
+</span></span><span style="display:flex;"><span>./bin/rotdetector -dir<span style="color:#f92672">=</span>/path/to/your/project -ci
+</span></span></code></pre></div><p>The tool is fast – I built it in Go with concurrent file processing, so it&rsquo;ll chew through thousands of files in seconds.</p>
+<h2 id="lessons-learned">Lessons Learned</h2>
+<p>After using this thing for a while, here&rsquo;s what I&rsquo;ve figured out:</p>
+<p><strong>Don&rsquo;t be overly optimistic with dates.</strong> I learned this the hard way. Setting a deadline you can&rsquo;t meet just leads to build failures and grumpy teammates. It&rsquo;s better to be realistic and extend when needed.</p>
+<p><strong>Context is king!</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// BestBy 03/2025: Remove after customer migration to new API</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Context: Legacy customers still depend on v1 endpoint</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Ticket: PROJ-1234</span>
+</span></span></code></pre></div><p><strong>Different types of debt need different timelines:</strong></p>
+<ul>
+<li>Feature flags: Plan around your rollout schedule</li>
+<li>Quick fixes: Align with your sprint cycles</li>
+<li>Legacy compatibility: Match your deprecation timeline</li>
+<li>Performance hacks: Tie to when you&rsquo;ll actually have time to optimize</li>
+</ul>
+<p><strong>Make your code reviewers care.</strong> When someone submits a PR with a <code>BestBy</code> comment, the reviewer should ask: &ldquo;Is this date realistic? Do we have a plan?&rdquo;</p>
+<h2 id="what-actually-happened">What Actually Happened</h2>
+<p>I&rsquo;ll be honest – I was skeptical this would work. But after rolling it out across a few projects, the results were better than I expected:</p>
+<p>Our codebase stopped accumulating the usual pile of forgotten TODOs. When something was marked for cleanup, it actually got cleaned up (or at least had a documented reason for why it couldn&rsquo;t be).</p>
+<p>Most importantly, it shifted the team mindset from &ldquo;should we fix this?&rdquo; to &ldquo;when will we fix this?&rdquo; That&rsquo;s a small change in wording but a huge change in accountability.</p>
+<hr>
+<p>RotDetector is open source and living on <a href="https://github.com/bigodines/rotdetector" target="_blank" rel="noopener">GitHub</a>. It&rsquo;s a small tool that tackles a big problem – one expired comment at a time.</p>
+<p>Next time you&rsquo;re about to write a TODO, try adding a <code>BestBy</code> date instead. Your future self will probably curse you for the accountability, but they&rsquo;ll also thank you for the reminder.</p>
+<p><em>Have you found other ways to keep technical debt under control? I&rsquo;d love to hear about what&rsquo;s worked (or spectacularly failed) for your team.</em></p>
+
+        </div>
+        
+        
+        <footer class="post-footer">
+            <div class="post-navigation">
+                
+                <a href="/posts/bigopool/" class="nav-prev">← High-performance worker pools with Bigopool</a>
+                
+                
+            </div>
+        </footer>
+        
+    </article>
+</div>
+
+    </main>
+    
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <p>&copy; 2025 Matheus Mendes. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/index.xml" class="footer-link">RSS</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    
+    <script src="/js/main.js"></script>
+</body>
+</html>

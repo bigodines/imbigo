@@ -2,46 +2,60 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
-    <link>https://imbigo.net/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 May 2025 20:45:55 -0700</lastBuildDate>
-    <atom:link href="https://imbigo.net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Jun 2025 15:31:37 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bigopool</title>
-      <link>https://imbigo.net/code/bigopool/</link>
+      <link>http://localhost:1313/code/bigopool/</link>
       <pubDate>Sat, 24 May 2025 22:15:45 -0700</pubDate>
-      <guid>https://imbigo.net/code/bigopool/</guid>
-      <description>&lt;h3 id=&#34;high-performance-async-processing-in-go&#34;&gt;High performance async processing in Go&lt;/h3&gt;&#xA;&lt;p&gt;More on the blog post: &lt;a href=&#34;https://imbigo.net/posts/bigopool/&#34;&gt;Bigopool&lt;/a&gt;&lt;/p&gt;</description>
+      <guid>http://localhost:1313/code/bigopool/</guid>
+      <description>&lt;h3 id=&#34;high-performance-async-processing-in-go&#34;&gt;High performance async processing in Go&lt;/h3&gt;&#xA;&lt;p&gt;More on the blog post: &lt;a href=&#34;http://localhost:1313/posts/bigopool/&#34;&gt;Bigopool&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Imbigo.net</title>
-      <link>https://imbigo.net/code/obsidian&#43;hugo-integration/</link>
+      <link>http://localhost:1313/code/obsidian&#43;hugo-integration/</link>
       <pubDate>Sat, 24 May 2025 21:59:05 -0700</pubDate>
-      <guid>https://imbigo.net/code/obsidian&#43;hugo-integration/</guid>
+      <guid>http://localhost:1313/code/obsidian&#43;hugo-integration/</guid>
       <description>&lt;p&gt;Coming soon&amp;hellip;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;strong&gt;Project Type:&lt;/strong&gt; #hugo #web-development #obsidian #vibing #ai&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Status:&lt;/strong&gt; active&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Rotdector</title>
+      <link>http://localhost:1313/posts/rotdector/</link>
+      <pubDate>Mon, 16 Jun 2025 15:31:37 +0800</pubDate>
+      <guid>http://localhost:1313/posts/rotdector/</guid>
+      <description>&lt;h1 id=&#34;fighting-code-rot-how-i-built-a-tool-to-keep-technical-debt-in-check&#34;&gt;Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check&lt;/h1&gt;&#xA;&lt;p&gt;&lt;em&gt;&amp;ldquo;This is a temporary fix. I&amp;rsquo;ll come back for it later&amp;rdquo;&lt;/em&gt; – Famous last words that every developer has uttered at least once.&lt;/p&gt;&#xA;&lt;p&gt;We&amp;rsquo;ve all been there. You&amp;rsquo;re staring down a deadline, your PM is breathing down your neck, and you need to ship something that works. So you write a quick hack, slap a &lt;code&gt;// TODO: refactor this ugly mess&lt;/code&gt; comment on top, and move on with your life.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>High-performance worker pools with Bigopool</title>
-      <link>https://imbigo.net/posts/bigopool/</link>
+      <link>http://localhost:1313/posts/bigopool/</link>
       <pubDate>Thu, 29 May 2025 20:45:55 -0700</pubDate>
-      <guid>https://imbigo.net/posts/bigopool/</guid>
+      <guid>http://localhost:1313/posts/bigopool/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Concurrency is one of Go&amp;rsquo;s greatest strengths, but managing goroutines effectively at scale can be challenging. When you have millions of tasks to process, spawning a goroutine for each one can quickly overwhelm your system with excessive memory usage and context switching overhead. This is where worker pools come to the rescue.&lt;/p&gt;&#xA;&lt;p&gt;A few years ago, I created &lt;a href=&#34;https://github.com/bigodines/bigopool&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;bigopool&lt;/a&gt;, a lightweight Go library that implements high-performance worker pools with elegant error and result handling. Today, I have finally decided to write about it.&lt;/p&gt;</description>
     </item>
     <item>
       <title>About Me</title>
-      <link>https://imbigo.net/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Thu, 29 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://imbigo.net/about/</guid>
+      <guid>http://localhost:1313/about/</guid>
       <description>&lt;p&gt;Hi, I&amp;rsquo;m Matheus Mendes but most of my friends call me &lt;strong&gt;Bigo&lt;/strong&gt;. I&amp;rsquo;m a software engineer with 20 years of professional coding experience, 10 of these working in Silicon Valley startups. I recently bought a cool domain name and decided to start a personal log of projects, advice and interesting stories. I have no intention of updating this more than once or twice a year unless major life events happen.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hello world</title>
-      <link>https://imbigo.net/posts/hello-world/</link>
+      <link>http://localhost:1313/posts/hello-world/</link>
       <pubDate>Sat, 24 May 2025 21:58:06 -0700</pubDate>
-      <guid>https://imbigo.net/posts/hello-world/</guid>
+      <guid>http://localhost:1313/posts/hello-world/</guid>
       <description>&lt;p&gt;I got a new domain and a goal to write more in 2025 so yeah. Welcome to my website.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Tags:&lt;/strong&gt; #blog&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/code/rotdetector/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/code/rotdetector/</guid>
+      <description></description>
     </item>
   </channel>
 </rss>
