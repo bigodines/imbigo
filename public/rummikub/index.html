@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rummikub Timer - Imbigo</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --text-color: #1e293b;
+            --bg-color: #ffffff;
+            --border-color: #e2e8f0;
+            --danger-color: #dc2626;
+            --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .header {
+            margin-bottom: 3rem;
+        }
+
+        .site-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+            transition: color 0.2s ease;
+        }
+
+        .site-link:hover {
+            color: var(--primary-hover);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .timer-display {
+            font-size: 8rem;
+            font-weight: 800;
+            margin: 2rem 0;
+            color: var(--text-color);
+            font-variant-numeric: tabular-nums;
+            transition: color 0.2s ease;
+        }
+
+        .timer-display.warning {
+            color: var(--danger-color);
+        }
+
+        .controls {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .status {
+            margin-top: 2rem;
+            font-size: 1.125rem;
+            color: var(--text-color);
+        }
+
+        .instructions {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background-color: #f8fafc;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .instructions h3 {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .instructions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .instructions li {
+            margin-bottom: 0.5rem;
+            color: #64748b;
+        }
+
+        .flash {
+            background-color: var(--danger-color) !important;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .timer-display {
+                font-size: 6rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/" class="site-link">← Back to Imbigo.net</a>
+            <h1>Rummikub Timer</h1>
+        </div>
+
+        <div class="timer-display" id="timerDisplay">1:00</div>
+
+        <div class="controls">
+            <button class="btn btn-primary" id="startStopBtn">Start</button>
+            <button class="btn btn-secondary" id="resetBtn">Reset</button>
+        </div>
+
+        <div class="status" id="status">Ready to start</div>
+
+        <div class="instructions">
+            <h3>How to use:</h3>
+            <ul>
+                <li>• Click "Start" to begin the 1-minute countdown</li>
+                <li>• Press "Reset" or spacebar to reset to 1:00</li>
+                <li>• Timer flashes red in the last 10 seconds</li>
+                <li>• A beep sounds when time expires</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        class RummikubTimer {
+            constructor() {
+                this.timeLeft = 60; // 60 seconds
+                this.isRunning = false;
+                this.intervalId = null;
+                this.flashIntervalId = null;
+                
+                this.timerDisplay = document.getElementById('timerDisplay');
+                this.startStopBtn = document.getElementById('startStopBtn');
+                this.resetBtn = document.getElementById('resetBtn');
+                this.status = document.getElementById('status');
+                
+                this.bindEvents();
+                this.updateDisplay();
+            }
+
+            bindEvents() {
+                this.startStopBtn.addEventListener('click', () => this.toggleTimer());
+                this.resetBtn.addEventListener('click', () => this.resetTimer());
+                
+                // Spacebar to reset
+                document.addEventListener('keydown', (e) => {
+                    if (e.code === 'Space') {
+                        e.preventDefault();
+                        this.resetTimer();
+                    }
+                });
+            }
+
+            toggleTimer() {
+                if (this.isRunning) {
+                    this.stopTimer();
+                } else {
+                    this.startTimer();
+                }
+            }
+
+            startTimer() {
+                this.isRunning = true;
+                this.startStopBtn.textContent = 'Stop';
+                this.status.textContent = 'Timer running...';
+                
+                this.intervalId = setInterval(() => {
+                    this.timeLeft--;
+                    this.updateDisplay();
+                    
+                    if (this.timeLeft <= 10 && this.timeLeft > 0) {
+                        this.startFlashing();
+                        this.timerDisplay.classList.add('warning');
+                    }
+                    
+                    if (this.timeLeft <= 0) {
+                        this.timerExpired();
+                    }
+                }, 1000);
+            }
+
+            stopTimer() {
+                this.isRunning = false;
+                this.startStopBtn.textContent = 'Start';
+                this.status.textContent = 'Timer stopped';
+                
+                if (this.intervalId) {
+                    clearInterval(this.intervalId);
+                    this.intervalId = null;
+                }
+                
+                this.stopFlashing();
+            }
+
+            resetTimer() {
+                const wasRunning = this.isRunning;
+                this.stopTimer();
+                this.timeLeft = 60;
+                this.updateDisplay();
+                this.timerDisplay.classList.remove('warning');
+                this.stopFlashing();
+                
+                if (wasRunning) {
+                    // If timer was running, restart it immediately
+                    this.startTimer();
+                } else {
+                    this.status.textContent = 'Ready to start';
+                }
+            }
+
+            timerExpired() {
+                this.stopTimer();
+                this.status.textContent = 'Time\'s up!';
+                this.playBeep();
+                this.stopFlashing();
+            }
+
+            updateDisplay() {
+                const minutes = Math.floor(this.timeLeft / 60);
+                const seconds = this.timeLeft % 60;
+                this.timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            startFlashing() {
+                if (this.flashIntervalId) return; // Already flashing
+                
+                this.flashIntervalId = setInterval(() => {
+                    document.body.classList.toggle('flash');
+                }, 500);
+            }
+
+            stopFlashing() {
+                if (this.flashIntervalId) {
+                    clearInterval(this.flashIntervalId);
+                    this.flashIntervalId = null;
+                }
+                document.body.classList.remove('flash');
+            }
+
+            playBeep() {
+                // Create audio beep using Web Audio API
+                try {
+                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+                    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+                    
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + 1);
+                } catch (error) {
+                    // Fallback: try to use a simple alert sound
+                    console.log('Beep! Time\'s up!');
+                }
+            }
+        }
+
+        // Initialize timer when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new RummikubTimer();
+        });
+    </script>
+</body>
+</html>
