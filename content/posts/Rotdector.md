@@ -79,6 +79,8 @@ Here's how this looks in practice:
 ### Feature Flags That Actually Get Removed
 
 ```go
+// foo.go
+
 // BestBy 12/2024: Remove feature flag after Q4 rollout
 if featureFlags.EnableNewDashboard {
     return renderNewDashboard(ctx)
@@ -91,6 +93,8 @@ I can't tell you how many times I've seen feature flags that outlived the featur
 ### Workarounds with Exit Strategies
 
 ```python
+# bar.py
+
 # BestBy 03/2025: Remove when API v2 is stable
 def get_user_data(user_id):
     try:
@@ -103,6 +107,8 @@ def get_user_data(user_id):
 ### "Good Enough for Now" Code
 
 ```typescript
+// baz.tsx 
+
 // BestBy 08/2025: Profile and optimize after first deliverable
 export function processItems(items: Item[]): ProcessedItem[] {
     // Quick and dirty implementation for MVP
@@ -161,7 +167,7 @@ make build
 ./bin/rotdetector -dir=/path/to/your/project -ci
 ```
 
-The tool is fast – I built it in Go with concurrent file processing, so it'll chew through thousands of files in seconds.
+The tool is fast – I built it in Go with concurrent file processing (obviously using [bigopool](https://imbigo.net/posts/bigopool/) ;D), so it'll chew through thousands of files in seconds.
 
 ## Lessons Learned
 
@@ -184,13 +190,7 @@ After using this thing for a while, here's what I've figured out:
 
 **Make your code reviewers care.** When someone submits a PR with a `BestBy` comment, the reviewer should ask: "Is this date realistic? Do we have a plan?"
 
-## What Actually Happened
 
-I'll be honest – I was skeptical this would work. But after rolling it out across a few projects, the results were better than I expected:
-
-Our codebase stopped accumulating the usual pile of forgotten TODOs. When something was marked for cleanup, it actually got cleaned up (or at least had a documented reason for why it couldn't be).
-
-Most importantly, it shifted the team mindset from "should we fix this?" to "when will we fix this?" That's a small change in wording but a huge change in accountability.
 
 ---
 

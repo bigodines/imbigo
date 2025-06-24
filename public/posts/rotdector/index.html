@@ -126,14 +126,18 @@
 <h2 id="some-examples">Some examples</h2>
 <p>Here&rsquo;s how this looks in practice:</p>
 <h3 id="feature-flags-that-actually-get-removed">Feature Flags That Actually Get Removed</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// BestBy 12/2024: Remove feature flag after Q4 rollout</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// foo.go</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// BestBy 12/2024: Remove feature flag after Q4 rollout</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">featureFlags</span>.<span style="color:#a6e22e">EnableNewDashboard</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">renderNewDashboard</span>(<span style="color:#a6e22e">ctx</span>)
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">renderLegacyDashboard</span>(<span style="color:#a6e22e">ctx</span>)
 </span></span></code></pre></div><p>I can&rsquo;t tell you how many times I&rsquo;ve seen feature flags that outlived the features they were supposed to toggle.</p>
 <h3 id="workarounds-with-exit-strategies">Workarounds with Exit Strategies</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># BestBy 03/2025: Remove when API v2 is stable</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># bar.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># BestBy 03/2025: Remove when API v2 is stable</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_data</span>(user_id):
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> api_v2_client<span style="color:#f92672">.</span>get_user(user_id)
@@ -141,7 +145,9 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Fallback to v1 API</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> api_v1_client<span style="color:#f92672">.</span>get_user(user_id)
 </span></span></code></pre></div><h3 id="good-enough-for-now-code">&ldquo;Good Enough for Now&rdquo; Code</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// BestBy 08/2025: Profile and optimize after first deliverable
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#75715e">// baz.tsx 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// BestBy 08/2025: Profile and optimize after first deliverable
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processItems</span>(<span style="color:#a6e22e">items</span>: <span style="color:#66d9ef">Item</span>[])<span style="color:#f92672">:</span> <span style="color:#a6e22e">ProcessedItem</span>[] {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Quick and dirty implementation for MVP
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">items</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">item</span> <span style="color:#f92672">=&gt;</span> ({
@@ -180,7 +186,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Make it CI-friendly (no pretty colors)</span>
 </span></span><span style="display:flex;"><span>./bin/rotdetector -dir<span style="color:#f92672">=</span>/path/to/your/project -ci
-</span></span></code></pre></div><p>The tool is fast – I built it in Go with concurrent file processing, so it&rsquo;ll chew through thousands of files in seconds.</p>
+</span></span></code></pre></div><p>The tool is fast – I built it in Go with concurrent file processing (obviously using <a href="https://imbigo.net/posts/bigopool/" target="_blank" rel="noopener">bigopool</a> ;D), so it&rsquo;ll chew through thousands of files in seconds.</p>
 <h2 id="lessons-learned">Lessons Learned</h2>
 <p>After using this thing for a while, here&rsquo;s what I&rsquo;ve figured out:</p>
 <p><strong>Don&rsquo;t be overly optimistic with dates.</strong> I learned this the hard way. Setting a deadline you can&rsquo;t meet just leads to build failures and grumpy teammates. It&rsquo;s better to be realistic and extend when needed.</p>
@@ -196,10 +202,6 @@
 <li>Performance hacks: Tie to when you&rsquo;ll actually have time to optimize</li>
 </ul>
 <p><strong>Make your code reviewers care.</strong> When someone submits a PR with a <code>BestBy</code> comment, the reviewer should ask: &ldquo;Is this date realistic? Do we have a plan?&rdquo;</p>
-<h2 id="what-actually-happened">What Actually Happened</h2>
-<p>I&rsquo;ll be honest – I was skeptical this would work. But after rolling it out across a few projects, the results were better than I expected:</p>
-<p>Our codebase stopped accumulating the usual pile of forgotten TODOs. When something was marked for cleanup, it actually got cleaned up (or at least had a documented reason for why it couldn&rsquo;t be).</p>
-<p>Most importantly, it shifted the team mindset from &ldquo;should we fix this?&rdquo; to &ldquo;when will we fix this?&rdquo; That&rsquo;s a small change in wording but a huge change in accountability.</p>
 <hr>
 <p>RotDetector is open source and living on <a href="https://github.com/bigodines/rotdetector" target="_blank" rel="noopener">GitHub</a>. It&rsquo;s a small tool that tackles a big problem – one expired comment at a time.</p>
 <p>Next time you&rsquo;re about to write a TODO, try adding a <code>BestBy</code> date instead. Your future self will probably curse you for the accountability, but they&rsquo;ll also thank you for the reminder.</p>
