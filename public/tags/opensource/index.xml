@@ -6,12 +6,12 @@
     <description>Recent content in Opensource on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Jun 2025 15:31:37 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Jun 2025 15:31:37 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/opensource/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check</title>
       <link>http://localhost:1313/posts/rotdector/</link>
-      <pubDate>Mon, 16 Jun 2025 15:31:37 +0800</pubDate>
+      <pubDate>Sun, 22 Jun 2025 15:31:37 +0800</pubDate>
       <guid>http://localhost:1313/posts/rotdector/</guid>
       <description>&lt;p&gt;&lt;em&gt;&amp;ldquo;This is a temporary fix. I&amp;rsquo;ll come back for it later&amp;rdquo;&lt;/em&gt; – Famous last words that every developer has uttered at least once.&lt;/p&gt;&#xA;&lt;p&gt;We&amp;rsquo;ve all been there. You&amp;rsquo;re staring down a deadline, your PM is breathing down your neck, and you need to ship something that works. So you write a quick hack, slap a &lt;code&gt;// TODO: refactor this ugly mess&lt;/code&gt; comment on top, and move on with your life.&lt;/p&gt;</description>
     </item>

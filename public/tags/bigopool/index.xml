@@ -6,12 +6,12 @@
     <description>Recent content in Bigopool on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 May 2025 20:45:55 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 12 Jun 2025 20:45:55 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/bigopool/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>High-performance worker pools with Bigopool</title>
       <link>http://localhost:1313/posts/bigopool/</link>
-      <pubDate>Thu, 29 May 2025 20:45:55 -0700</pubDate>
+      <pubDate>Thu, 12 Jun 2025 20:45:55 -0700</pubDate>
       <guid>http://localhost:1313/posts/bigopool/</guid>
       <description>&lt;p&gt;Concurrency is one of Go&amp;rsquo;s greatest strengths, but managing goroutines effectively at scale can be challenging. When you have millions of tasks to process, spawning a goroutine for each one can quickly overwhelm your system with excessive memory usage and context switching overhead. This is where worker pools come to the rescue.&lt;/p&gt;&#xA;&lt;p&gt;A few years ago, I created &lt;a href=&#34;https://github.com/bigodines/bigopool&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;bigopool&lt;/a&gt;, a lightweight Go library that implements high-performance worker pools with elegant error and result handling. Today, I have finally decided to write about it.&lt;/p&gt;</description>
     </item>

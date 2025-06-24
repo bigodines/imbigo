@@ -2,7 +2,7 @@
 title = 'About Me'
 date = '2025-05-29'
 layout = 'about'
-image = '/images/profile.jpg'
+image = '/img/profile.jpeg'
 +++
 
 Hi, I'm Matheus Mendes but most of my friends call me **Bigo**. I'm a software engineer with 20 years of professional coding experience, 10 of these working in Silicon Valley startups. I recently bought a cool domain name and decided to start a personal log of projects, advice and interesting stories. I have no intention of updating this more than once or twice a year unless major life events happen.
