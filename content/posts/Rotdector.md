@@ -1,6 +1,6 @@
 ---
 title: "Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check"
-date: 2025-06-16T15:31:37+08:00
+date: 2025-06-22T15:31:37+08:00
 draft: false
 description: "Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check"
 tags:

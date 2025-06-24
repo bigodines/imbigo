@@ -18,7 +18,7 @@ weight: 1
 
   
 
-Coming soon...
+More on this coming soon...
   
 
 
