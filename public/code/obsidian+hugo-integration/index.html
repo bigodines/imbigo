@@ -3,8 +3,8 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imbigo.net | </title>
-    <meta name="description" content="Vibin some Obsidian &#43; Hugo integration with auto-deploy to a custom domain and free hosting from github">
+    <title>How I built this site | </title>
+    <meta name="description" content="How I used Claude Sonnet 4 to build a complete Hugo website with Obsidian CMS integration, custom theme, and automated deployment pipeline - in one afternoon">
     <meta name="author" content="Matheus Mendes">
     
     
@@ -61,7 +61,7 @@
 <div class="container">
     <article class="project-detail">
         <header class="project-header">
-            <h1 class="project-title">Imbigo.net</h1>
+            <h1 class="project-title">How I built this site</h1>
             <div class="project-meta">
                 <time datetime="2025-05-24">
                     May 24, 2025
@@ -73,10 +73,95 @@
         </header>
         
         <div class="project-content">
-            <p>More on this coming soon&hellip;</p>
+            <h2 id="the-challenge-website-in-an-evening">The Challenge: Website in an Evening</h2>
+<p>I had a Sunday evening free and decided to see how far I could get building a personal website with an AI agent&rsquo;s help. The goal wasn&rsquo;t just to throw together a basic site, but to create something I&rsquo;d actually want to use - complete with a custom theme, content management, and proper deployment.</p>
+<p>Spoiler alert: you&rsquo;re reading this on that very website.</p>
+<h2 id="what-i-wanted">What I Wanted</h2>
+<p>My requirements were pretty specific:</p>
+<ul>
+<li>A personal blog/portfolio site using Hugo. This would allow me to host for free as a GitHub page and would make it blazing fast and highly cacheable</li>
+<li>Three different page types: blog posts, an about page, and a place to keep my open source code categorized</li>
+<li>Content management through Obsidian (since I already live in it for notes)</li>
+<li>Something that looks modern but doesn&rsquo;t take forever to load</li>
+<li>Custom domain with automated deployment</li>
+</ul>
+<p>I started with <code>hugo new site imbigo</code>, opened VSCode, and basically told the AI what I wanted:</p>
+<pre tabindex="0"><code>&#34;I just started this project using Hugo v0.147.5. In a brand new git repository. My plan is for us to code a personal website/blog for me using Hugo and eventually manage the content from my Obsidian notes. I would like for you to get familiar with the files in this directory and for us to start working on a theme for my future website.
+
+My website will have three types of pages: the main page is going to be a blog with my latest articles, I also want an &#34;about me&#34; page with a large picture on the right side and some text on the left where I will briefly describe my professional path. I would also like a different page layout for a &#34;code&#34; section where I will showcase open source projects I&#39;ve built.
+
+In terms of the style of the website, I am looking for something modern but lightweight. Should we give it a try?&#34;
+</code></pre><h2 id="how-it-actually-went">How It Actually Went</h2>
+<h3 id="getting-the-theme-right-1-prompt">Getting the Theme Right (1 prompt)</h3>
+<p>The AI immediately got to work on a custom theme called <code>imbigo-theme</code>. I was honestly surprised at how well it understood Hugo&rsquo;s structure right away. It created:</p>
+<ul>
+<li>A complete theme with all the Hugo conventions</li>
+<li>Responsive layouts for all three page types</li>
+<li>Clean HTML with proper Hugo templating</li>
+<li>CSS with flexbox that actually worked on mobile</li>
+<li>Some basic JavaScript for navigation</li>
+<li>Slop placeholder texts</li>
+</ul>
+<p>The crazy part? It all worked on the first try. No broken layouts, no debugging - just a working website.</p>
+<h3 id="setting-up-content-part-of-initial-prompt">Setting Up Content (part of initial prompt)</h3>
+<p>Next was organizing the content structure. The AI set up all the directories properly and created some sample posts to show how each page type would work:</p>
+<ul>
+<li>Blog posts in <code>/content/posts/</code></li>
+<li>Project showcases in <code>/content/code/</code></li>
+<li>Static pages like the about page</li>
+<li>Front matter templates for each type</li>
+</ul>
+<p>Nothing groundbreaking here, but it saved me from having to remember Hugo&rsquo;s conventions.</p>
+<h3 id="logo-tweaking-3-prompts">Logo Tweaking (3 prompts)</h3>
+<p>I had created a logo using DALL-E  and wanted to use it instead of just text. The AI swapped it in easily, but then came the fun part - getting the sizing right. &ldquo;The logo is too big,&rdquo; I said. Fixed. &ldquo;Now it&rsquo;s too small.&rdquo; Fixed again. This back-and-forth actually worked really well. I would have helped if I knew the size and where I wanted from the get go but I didn&rsquo;t so we were brute forcing until it looked good enough.</p>
+<h3 id="the-obsidian-integration-1-prompt">The Obsidian Integration (1 prompt)</h3>
+<p>This is where things got interesting. I explained that I wanted to write everything in Obsidian and have it sync to the website. The AI didn&rsquo;t just help with templates - it built me a complete solution:</p>
+<ul>
+<li>Obsidian templates for each content type with the right Hugo front matter</li>
+<li>A bash script (<code>sync-obsidian.sh</code>) that syncs my vault to Hugo&rsquo;s content directory</li>
+<li>Validation to make sure nothing breaks during sync</li>
+<li>A help system because why not</li>
+</ul>
+<p>The script actually works great and handles edge cases I didn&rsquo;t even think about.</p>
+<h3 id="getting-it-online-1-prompt">Getting It Online (1 prompt)</h3>
+<p>The last piece was deployment. I explained I wanted free hosting on GitHub with a custom domain, and the AI walked me through setting up:</p>
+<ul>
+<li>A GitHub Actions workflow for automated builds</li>
+<li>GitHub Pages configuration</li>
+<li>DNS setup for my custom domain</li>
+<li>Some Hugo optimizations for production</li>
+</ul>
+<p>Now whenever I push to main, the site rebuilds automatically.</p>
+<h2 id="what-i-ended-up-with">What I Ended Up With</h2>
+<p>After about 6 main prompts (plus a few small adjustments), I had:</p>
+<ul>
+<li>A custom Hugo theme that actually looks decent</li>
+<li>Three different page layouts that work on mobile</li>
+<li>Obsidian integration with automated syncing</li>
+<li>A deployment pipeline that runs on GitHub Actions</li>
+<li>Custom domain setup (imbigo.net)</li>
+<li>Google Analytics integration</li>
+<li>Documentation and templates for everything</li>
+</ul>
+<p>Total prompts: <del>6 for major features + 3-4 for tweaks
+Total cost: Claude subscription + domain (</del>$20/year)
+Hosting: Free on GitHub Pages
+Domain: (I forgot :D)
+Time to write a new post: Write in Obsidian, run sync script, done</p>
+<h2 id="takeaways">Takeaways</h2>
+<p>A few things that stood out:</p>
+<ol>
+<li>The AI understood the whole pipeline, not just individual pieces</li>
+<li>Small iterative changes worked really well</li>
+<li>It provided good documentation without being asked</li>
+<li>It followed Hugo conventions I didn&rsquo;t even know existed</li>
+<li>It anticipated problems I would have run into later</li>
+</ol>
+<p>Six prompts for a complete website with CMS and deployment. That&rsquo;s pretty remarkable when you think about it.</p>
+<p>If you&rsquo;re thinking about trying AI-assisted development: be specific about what you want and expect to iterate. I&rsquo;m not here to tell you how to do it or to sell a course on how to build the perfect prompt but I&rsquo;m here to encourage to give it a honest try. The technology is surprisingly capable right now and only getting better every week.</p>
 <hr>
-<p><strong>Project Type:</strong> #hugo #web-development #obsidian #vibing #ai</p>
-<p><strong>Status:</strong> active</p>
+<hr>
+<p><em>Want to see the full conversation? <a href="/conversation-export-sanitized.json">Download the complete chat export</a> to see every prompt and response that built this site. The code is all on GitHub too.</em></p>
 
         </div>
         
@@ -85,12 +170,12 @@
             
             <div class="project-links">
                 
-                <a href="https://github.com/yourusername/project-name" class="project-link github" target="_blank" rel="noopener">
+                <a href="https://github.com/bigodines/imbigo" class="project-link github" target="_blank" rel="noopener">
                     <span>View Code</span>
                 </a>
                 
                 
-                <a href="https://your-demo-url.com" class="project-link demo" target="_blank" rel="noopener">
+                <a href="https://www.imbigo.net" class="project-link demo" target="_blank" rel="noopener">
                     <span>Live Demo</span>
                 </a>
                 
@@ -110,6 +195,10 @@
                     
                     <span class="tech-tag">Obsidian</span>
                     
+                    <span class="tech-tag">GitHub Actions</span>
+                    
+                    <span class="tech-tag">AI</span>
+                    
                 </div>
             </div>
             
@@ -118,10 +207,6 @@
         
         <footer class="project-footer">
             <div class="project-navigation">
-                
-                <a href="/code/rotdetector/" class="nav-link prev">
-                    ← 
-                </a>
                 
                 
                 <a href="/code/bigopool/" class="nav-link next">

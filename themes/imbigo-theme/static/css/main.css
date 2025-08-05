@@ -332,8 +332,11 @@ main {
     background-color: var(--bg-secondary);
     padding: 1.5rem;
     border-radius: var(--border-radius);
-    overflow-x: auto;
     margin: 1.5rem 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .post-content pre code {
@@ -682,6 +685,30 @@ main {
 .project-content {
     line-height: 1.8;
     color: var(--text-color);
+}
+
+.project-content pre {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin: 1.5rem 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.project-content pre code {
+    background: none;
+    padding: 0;
+}
+
+.project-content code {
+    background-color: var(--bg-secondary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
 }
 
 .project-content h2 {

@@ -6,8 +6,15 @@
     <description>Recent content in Code on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Jun 2025 22:15:45 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 22 Jul 2025 16:56:28 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>rotDetector</title>
+      <link>http://localhost:1313/code/rotdetector/</link>
+      <pubDate>Tue, 22 Jul 2025 16:56:28 -0700</pubDate>
+      <guid>http://localhost:1313/code/rotdetector/</guid>
+      <description>&lt;p&gt;I built a tool to help keep tech debt in check, make sure feature flags are cleared in a reasonable time and dependencies get updated. Check it out.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Bigopool</title>
       <link>http://localhost:1313/code/bigopool/</link>
@@ -16,18 +23,11 @@
       <description>&lt;h3 id=&#34;high-performance-async-processing-in-go&#34;&gt;High performance async processing in Go&lt;/h3&gt;&#xA;&lt;p&gt;More on the blog post: &lt;a href=&#34;http://localhost:1313/posts/bigopool/&#34;&gt;Bigopool&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Imbigo.net</title>
+      <title>How I built this site</title>
       <link>http://localhost:1313/code/obsidian&#43;hugo-integration/</link>
       <pubDate>Sat, 24 May 2025 21:59:05 -0700</pubDate>
       <guid>http://localhost:1313/code/obsidian&#43;hugo-integration/</guid>
-      <description>&lt;p&gt;More on this coming soon&amp;hellip;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;strong&gt;Project Type:&lt;/strong&gt; #hugo #web-development #obsidian #vibing #ai&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Status:&lt;/strong&gt; active&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/code/rotdetector/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/code/rotdetector/</guid>
-      <description></description>
+      <description>&lt;h2 id=&#34;the-challenge-website-in-an-evening&#34;&gt;The Challenge: Website in an Evening&lt;/h2&gt;&#xA;&lt;p&gt;I had a Sunday evening free and decided to see how far I could get building a personal website with an AI agent&amp;rsquo;s help. The goal wasn&amp;rsquo;t just to throw together a basic site, but to create something I&amp;rsquo;d actually want to use - complete with a custom theme, content management, and proper deployment.&lt;/p&gt;&#xA;&lt;p&gt;Spoiler alert: you&amp;rsquo;re reading this on that very website.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-wanted&#34;&gt;What I Wanted&lt;/h2&gt;&#xA;&lt;p&gt;My requirements were pretty specific:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
