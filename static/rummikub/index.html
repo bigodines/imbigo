@@ -130,18 +130,6 @@
             transform: translateY(-2px);
         }
 
-        .btn-test {
-            background-color: #10b981;
-            color: white;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
-        }
-
-        .btn-test:hover {
-            background-color: #059669;
-            transform: translateY(-2px);
-        }
-
         .status {
             margin-top: 2rem;
             font-size: 1.125rem;
@@ -209,7 +197,6 @@
         <div class="controls">
             <button class="btn btn-primary" id="startStopBtn">Start</button>
             <button class="btn btn-secondary" id="resetBtn">Reset</button>
-            <button class="btn btn-test" id="testAudioBtn">Test Sound</button>
         </div>
 
         <div class="status" id="status">Ready to start</div>
@@ -219,7 +206,6 @@
             <ul>
                 <li>• Click "Start" to begin the 1-minute countdown</li>
                 <li>• Press "Reset" or spacebar to reset to 1:00</li>
-                <li>• Use "Test Sound" to verify audio is working</li>
                 <li>• Timer flashes red in the last 10 seconds</li>
                 <li>• A beep sounds when time expires</li>
             </ul>
@@ -239,7 +225,6 @@
                 this.timerDisplay = document.getElementById('timerDisplay');
                 this.startStopBtn = document.getElementById('startStopBtn');
                 this.resetBtn = document.getElementById('resetBtn');
-                this.testAudioBtn = document.getElementById('testAudioBtn');
                 this.status = document.getElementById('status');
                 
                 this.bindEvents();
@@ -252,16 +237,6 @@
                     this.toggleTimer();
                 });
                 this.resetBtn.addEventListener('click', () => this.resetTimer());
-                this.testAudioBtn.addEventListener('click', () => {
-                    this.initializeAudio();
-                    this.playBeep();
-                    this.status.textContent = 'Audio test - did you hear the sound?';
-                    setTimeout(() => {
-                        if (!this.isRunning) {
-                            this.status.textContent = 'Ready to start';
-                        }
-                    }, 3000);
-                });
                 
                 // Spacebar to reset
                 document.addEventListener('keydown', (e) => {
