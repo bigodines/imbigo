@@ -130,6 +130,18 @@
             transform: translateY(-2px);
         }
 
+        .btn-test {
+            background-color: #10b981;
+            color: white;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .btn-test:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+
         .status {
             margin-top: 2rem;
             font-size: 1.125rem;
@@ -197,6 +209,7 @@
         <div class="controls">
             <button class="btn btn-primary" id="startStopBtn">Start</button>
             <button class="btn btn-secondary" id="resetBtn">Reset</button>
+            <button class="btn btn-test" id="testAudioBtn">Test Sound</button>
         </div>
 
         <div class="status" id="status">Ready to start</div>
@@ -206,6 +219,7 @@
             <ul>
                 <li>• Click "Start" to begin the 1-minute countdown</li>
                 <li>• Press "Reset" or spacebar to reset to 1:00</li>
+                <li>• Use "Test Sound" to verify audio is working</li>
                 <li>• Timer flashes red in the last 10 seconds</li>
                 <li>• A beep sounds when time expires</li>
             </ul>
@@ -219,10 +233,13 @@
                 this.isRunning = false;
                 this.intervalId = null;
                 this.flashIntervalId = null;
+                this.audioContext = null;
+                this.audioInitialized = false;
                 
                 this.timerDisplay = document.getElementById('timerDisplay');
                 this.startStopBtn = document.getElementById('startStopBtn');
                 this.resetBtn = document.getElementById('resetBtn');
+                this.testAudioBtn = document.getElementById('testAudioBtn');
                 this.status = document.getElementById('status');
                 
                 this.bindEvents();
@@ -230,8 +247,21 @@
             }
 
             bindEvents() {
-                this.startStopBtn.addEventListener('click', () => this.toggleTimer());
+                this.startStopBtn.addEventListener('click', () => {
+                    this.initializeAudio(); // Initialize audio on user interaction
+                    this.toggleTimer();
+                });
                 this.resetBtn.addEventListener('click', () => this.resetTimer());
+                this.testAudioBtn.addEventListener('click', () => {
+                    this.initializeAudio();
+                    this.playBeep();
+                    this.status.textContent = 'Audio test - did you hear the sound?';
+                    setTimeout(() => {
+                        if (!this.isRunning) {
+                            this.status.textContent = 'Ready to start';
+                        }
+                    }, 3000);
+                });
                 
                 // Spacebar to reset
                 document.addEventListener('keydown', (e) => {
@@ -240,6 +270,31 @@
                         this.resetTimer();
                     }
                 });
+
+                // Initialize audio context on first user interaction (iOS requirement)
+                document.addEventListener('click', () => {
+                    this.initializeAudio();
+                }, { once: true });
+
+                document.addEventListener('touchstart', () => {
+                    this.initializeAudio();
+                }, { once: true });
+            }
+
+            initializeAudio() {
+                if (this.audioInitialized) return;
+                
+                try {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    // Resume audio context in case it's suspended (iOS requirement)
+                    if (this.audioContext.state === 'suspended') {
+                        this.audioContext.resume();
+                    }
+                    this.audioInitialized = true;
+                    console.log('Audio initialized successfully');
+                } catch (error) {
+                    console.warn('Failed to initialize audio:', error);
+                }
             }
 
             toggleTimer() {
@@ -329,24 +384,66 @@
             }
 
             playBeep() {
-                // Create audio beep using Web Audio API
+                // Try multiple methods to ensure sound plays on iOS/iPad
+                this.playWebAudioBeep();
+                this.playHTMLAudioBeep();
+                this.triggerVibration();
+            }
+
+            playWebAudioBeep() {
+                if (!this.audioContext || !this.audioInitialized) {
+                    console.log('Audio context not available');
+                    return;
+                }
+
                 try {
-                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
+                    // Resume audio context if suspended (iOS requirement)
+                    if (this.audioContext.state === 'suspended') {
+                        this.audioContext.resume();
+                    }
+
+                    const oscillator = this.audioContext.createOscillator();
+                    const gainNode = this.audioContext.createGain();
                     
                     oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
+                    gainNode.connect(this.audioContext.destination);
                     
-                    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-                    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+                    // Create a more attention-grabbing beep sequence
+                    oscillator.frequency.setValueAtTime(800, this.audioContext.currentTime);
+                    oscillator.frequency.setValueAtTime(1000, this.audioContext.currentTime + 0.1);
+                    oscillator.frequency.setValueAtTime(800, this.audioContext.currentTime + 0.2);
                     
-                    oscillator.start(audioContext.currentTime);
-                    oscillator.stop(audioContext.currentTime + 1);
+                    gainNode.gain.setValueAtTime(0.1, this.audioContext.currentTime);
+                    gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime + 0.1);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.8);
+                    
+                    oscillator.start(this.audioContext.currentTime);
+                    oscillator.stop(this.audioContext.currentTime + 0.8);
+                    
+                    console.log('Web Audio beep played');
                 } catch (error) {
-                    // Fallback: try to use a simple alert sound
-                    console.log('Beep! Time\'s up!');
+                    console.warn('Web Audio beep failed:', error);
+                }
+            }
+
+            playHTMLAudioBeep() {
+                try {
+                    // Create a data URL for a simple beep sound
+                    const audioData = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmEXBjer3/LOfC0F';
+                    const audio = new Audio(audioData);
+                    audio.volume = 0.5;
+                    audio.play().catch(e => console.warn('HTML Audio beep failed:', e));
+                    console.log('HTML Audio beep attempted');
+                } catch (error) {
+                    console.warn('HTML Audio setup failed:', error);
+                }
+            }
+
+            triggerVibration() {
+                // Trigger vibration on mobile devices
+                if ('vibrate' in navigator) {
+                    navigator.vibrate([200, 100, 200, 100, 200]);
+                    console.log('Vibration triggered');
                 }
             }
         }

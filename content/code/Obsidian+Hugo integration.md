@@ -1,9 +1,9 @@
 ---
-title: How I built this site
+title: How I built this site no-code
 date: 2025-05-24T21:59:05-07:00
 draft: false
 type: code
-description: How I used Claude Sonnet 4 to build a complete Hugo website with Obsidian CMS integration, custom theme, and automated deployment pipeline - in one afternoon
+description: How I used Claude Sonnet 4 to build a complete Hugo website with Obsidian CMS integration, custom theme, and automated deployment pipeline - in one afternoon, using github's free hosting.
 technologies:
   - JavaScript
   - Go
