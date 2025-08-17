@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My challenges with AI assisted coding | </title>
+    <meta name="description" content="Reflections on assisted AI coding">
+    <meta name="author" content="Matheus Mendes">
+    
+    
+    <link rel="stylesheet" href="/css/main.css">
+    
+    
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW5VZSYX44"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-KW5VZSYX44');
+    </script>
+</head>
+<body>
+    <header class="header">
+    <div class="container">
+        <nav class="nav">
+            <a href="/" class="nav-brand"></a>
+            
+            <div class="nav-menu" id="nav-menu">
+                
+                <a href="/" class="nav-link ">
+                    Blog
+                </a>
+                
+                <a href="/about/" class="nav-link ">
+                    About
+                </a>
+                
+                <a href="/code/" class="nav-link ">
+                    Code
+                </a>
+                
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div>
+</header>
+
+    
+    <main>
+        
+<div class="container">
+    <article class="single-post">
+        <header class="post-header">
+            <h1 class="post-title">My challenges with AI assisted coding</h1>
+            
+            <div class="post-meta">
+                <time datetime="2025-08-15">
+                    August 15, 2025
+                </time>
+                
+                <div class="post-tags">
+                    
+                    <span class="tag">#ai</span>
+                    
+                </div>
+                
+            </div>
+            
+        </header>
+        
+        <div class="post-content">
+            <p>I’m very bullish on AI code assistants. It’s actually the second biggest reason I stepped down from being a director and went back to IC life.</p>
+<p>I’ll write more about that decision another time, but today I want to share how I’m using AI day-to-day—and, maybe more importantly, when it doesn’t quite fit.</p>
+<p>My toolkit is pretty simple: VSCode, GitHub Copilot, Claude Sonnet, and occasionally KiloCode.</p>
+<p>The hardest part of working with AI so far has been the waiting. When I’m in “agentic” mode—fire off a big prompt and wait—it kills my flow. If I don’t get an answer in five seconds, my brain is already somewhere else, usually for twice as long as the model took to respond. Because of that, I’ve built my routine around minimizing that problem:</p>
+<ul>
+<li>
+<p>I almost never just throw a task at an agent and let it run wild (the only exception: it helped me spin up this website).</p>
+</li>
+<li>
+<p>I use agents as a sounding board for architecture debates, and they’re surprisingly good at turning requirements into Mermaid diagrams.</p>
+</li>
+<li>
+<p>When I’m diving into legacy code, AI assistants are great for orienting me and pointing out where to start.</p>
+</li>
+<li>
+<p>I usually write the first version of the code myself, then lean on AI to spot bugs—or at least clean up syntax and typing errors along the way.</p>
+</li>
+<li>
+<p>Once the code works, I always use AI to generate tests. Every single time. At that point I’m basically reviewing test code, which has actually helped me catch real implementation mistakes. (Sometimes hilariously, with tests like test_blah_returns_none_when_id_is_empty()—when what I really wanted was an exception.) Yes, it also spits out plenty of garbage mocks and useless assertions, but the time savings are still massive.</p>
+</li>
+<li>
+<p>I re-review everything top to bottom, usually deleting the flood of obvious comments (“This function returns X”).</p>
+</li>
+<li>
+<p>On PRs, I tag the Copilot bot. Its reviews are mostly fluff, but the little snippet summaries it generates are surprisingly valuable.</p>
+</li>
+</ul>
+<p>Lately, I’ve also been experimenting with:</p>
+<ul>
+<li>
+<p>Auto-generating documentation—it’s not perfect, but decent enough to save time.</p>
+</li>
+<li>
+<p>Cataloging my best prompts for different use cases (architecture, tests, repo-specific conventions, ideation, documentation).</p>
+</li>
+<li>
+<p>Spinning up separate agents for each language I use regularly: Go, Python (Flask), and React.</p>
+</li>
+</ul>
+<p>At the end of the day, I don’t think of AI as a replacement for writing code—I still do the core work myself. But it’s like having an endlessly available junior engineer and an architecture debate partner rolled into one. It saves me from the drudge work, helps me move faster, and sometimes even pushes me to rethink my assumptions.</p>
+<p>The tech still pulls me out of flow more often than I’d like, but the upside is undeniable. That’s why I’m doubling down on IC work right now: I want to be hands-on while this stuff evolves, because I’m convinced AI will reshape how we write and reason about software.</p>
+<p>For me, AI isn’t about the hype cycles or the big “end of software engineering” headlines. It’s about whether it helps me get into flow faster, cut down on tedious work, and catch mistakes earlier. Sometimes it does, sometimes it doesn’t. That gap—between potential and reality—is exactly what keeps me experimenting.</p>
+
+        </div>
+        
+        
+        <footer class="post-footer">
+            <div class="post-navigation">
+                
+                <a href="/posts/rotdector/" class="nav-prev">← Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check</a>
+                
+                
+            </div>
+        </footer>
+        
+    </article>
+</div>
+
+    </main>
+    
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <p>&copy; 2025 Matheus Mendes. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="/index.xml" class="footer-link">RSS</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    
+    <script src="/js/main.js"></script>
+</body>
+</html>

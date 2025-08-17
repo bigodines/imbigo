@@ -6,7 +6,7 @@
     <description>Recent content on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Jul 2025 16:56:28 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 15 Aug 2025 16:16:34 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>rotDetector</title>
@@ -28,6 +28,13 @@
       <pubDate>Sat, 24 May 2025 21:59:05 -0700</pubDate>
       <guid>http://localhost:1313/code/obsidian&#43;hugo-integration/</guid>
       <description>&lt;h2 id=&#34;the-challenge-website-in-an-evening&#34;&gt;The Challenge: Website in an Evening&lt;/h2&gt;&#xA;&lt;p&gt;I had a Sunday evening free and decided to see how far I could get building a personal website with an AI agent&amp;rsquo;s help. The goal wasn&amp;rsquo;t just to throw together a basic site, but to create something I&amp;rsquo;d actually want to use - complete with a custom theme, content management, and proper deployment.&lt;/p&gt;&#xA;&lt;p&gt;Spoiler alert: you&amp;rsquo;re reading this on that very website.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-wanted&#34;&gt;What I Wanted&lt;/h2&gt;&#xA;&lt;p&gt;My requirements were pretty specific:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>My challenges with AI assisted coding</title>
+      <link>http://localhost:1313/posts/ai-coding/</link>
+      <pubDate>Fri, 15 Aug 2025 16:16:34 -0700</pubDate>
+      <guid>http://localhost:1313/posts/ai-coding/</guid>
+      <description>&lt;p&gt;I’m very bullish on AI code assistants. It’s actually the second biggest reason I stepped down from being a director and went back to IC life.&lt;/p&gt;&#xA;&lt;p&gt;I’ll write more about that decision another time, but today I want to share how I’m using AI day-to-day—and, maybe more importantly, when it doesn’t quite fit.&lt;/p&gt;&#xA;&lt;p&gt;My toolkit is pretty simple: VSCode, GitHub Copilot, Claude Sonnet, and occasionally KiloCode.&lt;/p&gt;&#xA;&lt;p&gt;The hardest part of working with AI so far has been the waiting. When I’m in “agentic” mode—fire off a big prompt and wait—it kills my flow. If I don’t get an answer in five seconds, my brain is already somewhere else, usually for twice as long as the model took to respond. Because of that, I’ve built my routine around minimizing that problem:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Fighting Code Rot: How I Built a Tool to Keep Technical Debt in Check</title>
