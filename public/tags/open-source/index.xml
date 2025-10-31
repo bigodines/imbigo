@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Open-Source on </title>
+    <link>http://localhost:1313/tags/open-source/</link>
+    <description>Recent content in Open-Source on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 29 Oct 2025 19:24:06 -0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learn in Public</title>
+      <link>http://localhost:1313/posts/learn-in-public/</link>
+      <pubDate>Wed, 29 Oct 2025 19:24:06 -0700</pubDate>
+      <guid>http://localhost:1313/posts/learn-in-public/</guid>
+      <description>&lt;p&gt;Here&amp;rsquo;s is the first in a series of unsolicited advice to my fellow software engineers grinding to climb the technical ladder. You may not agree with all of them, but I still invite you to reflect.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Learn in Public&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Contribute to open source projects, join &lt;a href=&#34;https://www.kaggle.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kaggle&lt;/a&gt; competitions, be active in a programming community. Find ways to work on fun real life problems and build a portfolio along the way.&lt;/p&gt;&#xA;&lt;p&gt;Learning in public does three things simultaneously: it builds your skills working in a complex project/problem instead of tutorial hell, it creates tangible proof of your abilities that goes way beyond a resume, and it puts you in rooms (virtual or otherwise) with people who can change your career trajectory. When you contribute to open source, you&amp;rsquo;re getting code reviews from maintainers who might work at your dream company. And unlike grinding LeetCode in private, everything you do in public compounds - a GitHub contribution from three years ago can still land in a hiring manager&amp;rsquo;s search today. The portfolio you build isn&amp;rsquo;t just code, it&amp;rsquo;s proof you can collaborate, communicate, and ship. Bonus points: You are also making the software engineering world a better place for everyone.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
