@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Leadership on </title>
+    <link>http://localhost:1313/tags/leadership/</link>
+    <description>Recent content in Leadership on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 Nov 2025 19:24:06 -0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/leadership/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Own the Problems</title>
+      <link>http://localhost:1313/posts/own-the-problems/</link>
+      <pubDate>Wed, 05 Nov 2025 19:24:06 -0700</pubDate>
+      <guid>http://localhost:1313/posts/own-the-problems/</guid>
+      <description>&lt;p&gt;Here&amp;rsquo;s some unsolicited advice to my fellow software engineers grinding to climb the technical ladder. You may not agree with all of it, but I still invite you to reflect.&lt;/p&gt;&#xA;&lt;h2 id=&#34;its-your-problem&#34;&gt;It&amp;rsquo;s Your Problem&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve seen way too many people getting caught complaining that the PM didn&amp;rsquo;t write proper Jira tickets before sprint planning. Or that our node version is too old. Or that standup meetings were taking too long. Or that people don&amp;rsquo;t write tests&amp;hellip;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
